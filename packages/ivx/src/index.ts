@@ -6,6 +6,6 @@ export {
 } from "./vnode";
 export { context, connect } from "./vnode_factories";
 export { createBlueprint, componentWithBlueprint } from "./blueprint";
-export { renderToString } from "./render";
+export { render, renderWithBlueprint } from "./render";
 export { serializeState } from "./serialize";
 export { flattenString } from "./flatten";

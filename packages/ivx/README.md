@@ -10,15 +10,13 @@
 ## Render to string
 
 ```ts
-function renderToString(
+function render(
   node: VNode<any>,
-  context: Context = {},
-  blueprint?: BlueprintNode,
+  context: {} = {},
 ): string;
 ```
 
-`renderToString()` function renders Virtual DOM into a string. When `blueprint` parameter is specified, instead of
-rendering string from scratch, it will apply diff/patch algorithm on blueprint.
+`render()` function renders Virtual DOM into a string.
 
 ## Blueprints
 
@@ -33,6 +31,17 @@ function createBlueprint(
 `createBlueprint()` function creates a blueprint that can be used to optimize rendering. When `blueprint`
 parameter is specified, it will try to reuse existing blueprint nodes from the specified blueprint to reduce memory
 usage.
+
+```ts
+function renderWithBlueprint(
+  node: VNode<any>,
+  blueprint: BlueprintNode,
+  context: {} = {},
+): string;
+```
+
+`renderWithBlueprint()` function renders Virtual DOM into a string. When `blueprint` parameter is specified, instead of
+rendering string from scratch, it will apply diff/patch algorithm on blueprint.
 
 ### Blueprints linked to Components
 

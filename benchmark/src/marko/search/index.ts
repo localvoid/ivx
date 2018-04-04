@@ -1,4 +1,4 @@
-import { renderToString, createBlueprint } from "ivx";
+import { renderWithBlueprint, createBlueprint } from "ivx";
 import { MarkoSearchApp } from "./ui";
 
 /* tslint:disable:no-var-requires */
@@ -31,9 +31,8 @@ function getNextSearchResults(): any {
 const MarkoSearchBlueprint = createBlueprint(MarkoSearchApp({ items: [] }));
 
 export function runMarkoSearch() {
-  return renderToString(
+  return renderWithBlueprint(
     MarkoSearchApp(getNextSearchResults()),
-    undefined,
     MarkoSearchBlueprint,
   );
 }

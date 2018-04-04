@@ -1,4 +1,4 @@
-import { createBlueprint, renderToString } from "ivx";
+import { createBlueprint, renderWithBlueprint } from "ivx";
 import { MediumApp } from "./ui";
 
 const MediumBlueprint = createBlueprint(
@@ -11,13 +11,13 @@ const MediumBlueprint = createBlueprint(
 );
 
 export function runMedium() {
-  return renderToString(
+  return renderWithBlueprint(
     MediumApp(),
+    MediumBlueprint,
     {
       title: "Draft",
       saved: true,
       content: "Hello World",
     },
-    MediumBlueprint,
   );
 }

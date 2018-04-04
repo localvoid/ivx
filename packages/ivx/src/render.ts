@@ -535,19 +535,31 @@ function patchChildrenTrackByKeys(
 }
 
 /**
- * renderToString renders Virtual DOM to string.
+ * render renders Virtual DOM to string.
  *
  * @param node Virtual DOM.
  * @param context Current context.
- * @param blueprint When blueprint is specified, it will perform diff/patch on blueprint.
  * @returns Virtual DOM in string format.
  */
-export function renderToString(
+export function render(
   node: VNode<any>,
   context: {} = {},
-  blueprint?: BlueprintNode,
 ): string {
-  return blueprint === void 0 ?
-    renderVNode(node, context) :
-    patchVNode(blueprint, node, context);
+  return renderVNode(node, context);
+}
+
+/**
+ * renderWithBlueprint renders Virtual DOM to string by diffing with specified blueprint.
+ *
+ * @param node Virtual DOM.
+ * @param blueprint Perform diff/patch on blueprint.
+ * @param context Current context.
+ * @returns Virtual DOM in string format.
+ */
+export function renderWithBlueprint(
+  node: VNode<any>,
+  blueprint: BlueprintNode,
+  context: {} = {},
+): string {
+  return patchVNode(blueprint, node, context);
 }

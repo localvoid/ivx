@@ -1,11 +1,11 @@
-import { renderToString } from "ivx";
+import { render } from "ivx";
 import { MarkoColorApp } from "./ui";
 
 /* tslint:disable:no-var-requires */
 const Colors = require("./colors.json");
 
 export function runMarkoColor() {
-  return renderToString(
+  return render(
     MarkoColorApp(),
     {
       colors: Colors,
