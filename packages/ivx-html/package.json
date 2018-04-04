@@ -40,7 +40,6 @@
   "peerDependencies": {
     "ivx": "^0.1.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "ivx": "^0.1.0"
   }

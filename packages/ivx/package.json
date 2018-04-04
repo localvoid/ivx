@@ -42,9 +42,6 @@
     "test": "../../node_modules/.bin/jest",
     "test:coverage": "../../node_modules/.bin/jest --coverage"
   },
-  "peerDependencies": {},
-  "dependencies": {},
-  "devDependencies": {},
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
