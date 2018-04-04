@@ -90,6 +90,10 @@ export const enum VNodeFlags {
    */
   DeepConnect = 1 << 19,
   BlueprintFrozen = 1 << 20,
+
+  /**
+   * Unique ID.
+   */
   ElementIdMask = 255 << 21,
   ElementIdOffset = 21,
 
@@ -155,11 +159,11 @@ export class VNode<P = null> {
   /**
    * Style.
    */
-  _style: {} | BlueprintNode | null;
+  _style: {} | null;
   /**
    * Class name.
    */
-  _className: string | null;
+  _className: BlueprintNode | string | null;
   /**
    * Close element string.
    */
@@ -167,9 +171,9 @@ export class VNode<P = null> {
 
   constructor(
     flags: number,
-    tag: | string | Component<P> | ConnectDescriptor<any, any, any> | null,
+    tag: string | Component<P> | ConnectDescriptor<any, any, any> | null,
     props: P | null,
-    className: string | null,
+    className: BlueprintNode | string | null,
     children: VNode<any>[] | VNode<any> | string | number | boolean | null,
     close: string | null,
   ) {

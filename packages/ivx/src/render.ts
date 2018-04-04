@@ -3,7 +3,6 @@ import { BlueprintNode } from "./blueprint";
 import { Component } from "./component";
 import { ConnectDescriptor } from "./connect_descriptor";
 import { escapeAttributeValue, escapeText } from "./escape";
-import { flattenString } from "./flatten";
 
 /**
  * renderElementAttrs renders element attributes to string.
@@ -141,7 +140,7 @@ function renderVNode(node: VNode<any>, context: {}): string {
       }
       return renderVNode(root, context);
     } else {
-      return patchVNode((node._tag as Component).blueprint!, node, context);
+      return patchVNode(node._className as BlueprintNode, node, context);
     }
   }
 }
@@ -548,7 +547,7 @@ export function renderToString(
   context: {} = {},
   blueprint?: BlueprintNode,
 ): string {
-  return flattenString(blueprint === void 0 ?
+  return blueprint === void 0 ?
     renderVNode(node, context) :
-    patchVNode(blueprint, node, context));
+    patchVNode(blueprint, node, context);
 }

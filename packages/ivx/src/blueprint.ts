@@ -670,19 +670,16 @@ export function createBlueprint(node: VNode<any>, context: {} = {}, blueprint?: 
   return result;
 }
 
-export function componentWithBlueprint(node: VNode<null>, context: {}): () => VNode<null>;
-export function componentWithBlueprint<P>(node: VNode<P>, context: {} = {}): (props: P) => VNode<P> {
+export function componentWithBlueprint(node: VNode<null>, context?: {}): () => VNode<null>;
+export function componentWithBlueprint<P>(node: VNode<P>, context?: {}): (props: P) => VNode<P>;
+export function componentWithBlueprint<P>(node: VNode<P>, context?: {}): (props: P) => VNode<P> {
   const prev = node._tag as Component<P>;
-  const d = {
-    render: prev.render,
-    isPropsChanged: prev.isPropsChanged,
-    blueprint: createBlueprint(node, context),
-  };
+  const blueprint = createBlueprint(node, context);
   return (props: P) => new VNode<P>(
     VNodeFlags.Component | VNodeFlags.LinkedBlueprint,
-    d,
+    prev,
     props,
-    null,
+    blueprint,
     null,
     null,
   );

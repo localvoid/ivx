@@ -26,18 +26,6 @@ export function connect<T, P, C extends {}>(
   render: (props: T) => VNode<any>,
   select: (prev: T | null, props: P, context: C) => T,
 ): (props: P) => VNode<P>;
-export function connect<T>(
-  render: (props: T) => VNode<any>,
-  select: (prev: T | null, props: undefined) => T,
-): () => VNode<null>;
-export function connect<T, P>(
-  render: (props: T) => VNode<any>,
-  select: (prev: T | null, props: P) => T,
-): (props: P) => VNode<P>;
-export function connect<T>(
-  render: (props: T) => VNode<any>,
-  select: (prev: T | null) => T,
-): () => VNode<null>;
 export function connect<T, P, C extends {}>(
   render: (props: T) => VNode<any>,
   select: (prev: T | null, props: P, context: C) => T,

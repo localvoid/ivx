@@ -39,7 +39,7 @@ usage.
 ```ts
 function componentWithBlueprint<P>(
   node: VNode<P>,
-  context: {} = {},
+  context?: {},
 ): (props: P) => VNode<P>;
 ```
 

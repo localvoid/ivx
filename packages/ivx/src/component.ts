@@ -1,5 +1,4 @@
 import { VNode, VNodeFlags } from "./vnode";
-import { BlueprintNode } from "./blueprint";
 
 /**
  * Component descriptor.
@@ -7,7 +6,6 @@ import { BlueprintNode } from "./blueprint";
 export interface Component<P = void> {
   render(props: P): VNode<any>;
   isPropsChanged(oldProps: P, newProps: P): boolean;
-  blueprint: BlueprintNode | null;
 }
 
 export interface ComponentOptions<P> {
