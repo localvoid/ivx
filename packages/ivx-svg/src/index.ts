@@ -92,7 +92,7 @@ const enum TagId {
 
 export function a(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.A >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.A << VNodeFlags.UniqueIdOffset),
     "<a",
     null,
     className === void 0 ? null : className,
@@ -103,7 +103,7 @@ export function a(className?: string): VNode<{} | null> {
 
 export function altGlyph(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyph >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyph << VNodeFlags.UniqueIdOffset),
     "<altGlyph",
     null,
     className === void 0 ? null : className,
@@ -114,7 +114,7 @@ export function altGlyph(className?: string): VNode<{} | null> {
 
 export function altGlyphDef(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyphDef >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyphDef << VNodeFlags.UniqueIdOffset),
     "<altGlyphDef",
     null,
     className === void 0 ? null : className,
@@ -125,7 +125,7 @@ export function altGlyphDef(className?: string): VNode<{} | null> {
 
 export function altGlyphItem(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyphItem >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyphItem << VNodeFlags.UniqueIdOffset),
     "<altGlyphItem",
     null,
     className === void 0 ? null : className,
@@ -136,7 +136,7 @@ export function altGlyphItem(className?: string): VNode<{} | null> {
 
 export function animate(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Animate >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Animate << VNodeFlags.UniqueIdOffset),
     "<animate",
     null,
     className === void 0 ? null : className,
@@ -147,7 +147,7 @@ export function animate(className?: string): VNode<{} | null> {
 
 export function animateColor(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateColor >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateColor << VNodeFlags.UniqueIdOffset),
     "<animateColor",
     null,
     className === void 0 ? null : className,
@@ -158,7 +158,7 @@ export function animateColor(className?: string): VNode<{} | null> {
 
 export function animateMotion(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateMotion >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateMotion << VNodeFlags.UniqueIdOffset),
     "<animateMotion",
     null,
     className === void 0 ? null : className,
@@ -169,7 +169,7 @@ export function animateMotion(className?: string): VNode<{} | null> {
 
 export function animateTransform(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateTransform >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateTransform << VNodeFlags.UniqueIdOffset),
     "<animateTransform",
     null,
     className === void 0 ? null : className,
@@ -180,7 +180,7 @@ export function animateTransform(className?: string): VNode<{} | null> {
 
 export function circle(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Circle >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Circle << VNodeFlags.UniqueIdOffset),
     "<circle",
     null,
     className === void 0 ? null : className,
@@ -191,7 +191,7 @@ export function circle(className?: string): VNode<{} | null> {
 
 export function clipPath(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ClipPath >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ClipPath << VNodeFlags.UniqueIdOffset),
     "<clipPath",
     null,
     className === void 0 ? null : className,
@@ -202,7 +202,7 @@ export function clipPath(className?: string): VNode<{} | null> {
 
 export function colorProfile(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ColorProfile >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ColorProfile << VNodeFlags.UniqueIdOffset),
     "<color-profile",
     null,
     className === void 0 ? null : className,
@@ -213,7 +213,7 @@ export function colorProfile(className?: string): VNode<{} | null> {
 
 export function cursor(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Cursor >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Cursor << VNodeFlags.UniqueIdOffset),
     "<cursor",
     null,
     className === void 0 ? null : className,
@@ -224,7 +224,7 @@ export function cursor(className?: string): VNode<{} | null> {
 
 export function defs(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Defs >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Defs << VNodeFlags.UniqueIdOffset),
     "<defs",
     null,
     className === void 0 ? null : className,
@@ -235,7 +235,7 @@ export function defs(className?: string): VNode<{} | null> {
 
 export function desc(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Desc >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Desc << VNodeFlags.UniqueIdOffset),
     "<desc",
     null,
     className === void 0 ? null : className,
@@ -246,7 +246,7 @@ export function desc(className?: string): VNode<{} | null> {
 
 export function discard(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Discard >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Discard << VNodeFlags.UniqueIdOffset),
     "<discard",
     null,
     className === void 0 ? null : className,
@@ -257,7 +257,7 @@ export function discard(className?: string): VNode<{} | null> {
 
 export function ellipse(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Ellipse >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Ellipse << VNodeFlags.UniqueIdOffset),
     "<ellipse",
     null,
     className === void 0 ? null : className,
@@ -268,7 +268,7 @@ export function ellipse(className?: string): VNode<{} | null> {
 
 export function feBlend(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeBlend >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeBlend << VNodeFlags.UniqueIdOffset),
     "<feBlend",
     null,
     className === void 0 ? null : className,
@@ -279,7 +279,7 @@ export function feBlend(className?: string): VNode<{} | null> {
 
 export function feColorMatrix(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeColorMatrix >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeColorMatrix << VNodeFlags.UniqueIdOffset),
     "<feColorMatrix",
     null,
     className === void 0 ? null : className,
@@ -290,7 +290,7 @@ export function feColorMatrix(className?: string): VNode<{} | null> {
 
 export function feComponentTransfer(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeComponentTransfer >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeComponentTransfer << VNodeFlags.UniqueIdOffset),
     "<feComponentTransfer",
     null,
     className === void 0 ? null : className,
@@ -301,7 +301,7 @@ export function feComponentTransfer(className?: string): VNode<{} | null> {
 
 export function feComposite(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeComposite >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeComposite << VNodeFlags.UniqueIdOffset),
     "<feComposite",
     null,
     className === void 0 ? null : className,
@@ -312,7 +312,7 @@ export function feComposite(className?: string): VNode<{} | null> {
 
 export function feConvolveMatrix(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeConvolveMatrix >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeConvolveMatrix << VNodeFlags.UniqueIdOffset),
     "<feConvolveMatrix",
     null,
     className === void 0 ? null : className,
@@ -323,7 +323,7 @@ export function feConvolveMatrix(className?: string): VNode<{} | null> {
 
 export function feDiffuseLighting(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDiffuseLighting >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDiffuseLighting << VNodeFlags.UniqueIdOffset),
     "<feDiffuseLighting",
     null,
     className === void 0 ? null : className,
@@ -334,7 +334,7 @@ export function feDiffuseLighting(className?: string): VNode<{} | null> {
 
 export function feDisplacementMap(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDisplacementMap >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDisplacementMap << VNodeFlags.UniqueIdOffset),
     "<feDisplacementMap",
     null,
     className === void 0 ? null : className,
@@ -345,7 +345,7 @@ export function feDisplacementMap(className?: string): VNode<{} | null> {
 
 export function feDistantLight(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDistantLight >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDistantLight << VNodeFlags.UniqueIdOffset),
     "<feDistantLight",
     null,
     className === void 0 ? null : className,
@@ -356,7 +356,7 @@ export function feDistantLight(className?: string): VNode<{} | null> {
 
 export function feDropShadow(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDropShadow >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDropShadow << VNodeFlags.UniqueIdOffset),
     "<feDropShadow",
     null,
     className === void 0 ? null : className,
@@ -367,7 +367,7 @@ export function feDropShadow(className?: string): VNode<{} | null> {
 
 export function feFlood(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFlood >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFlood << VNodeFlags.UniqueIdOffset),
     "<feFlood",
     null,
     className === void 0 ? null : className,
@@ -378,7 +378,7 @@ export function feFlood(className?: string): VNode<{} | null> {
 
 export function feFuncA(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncA >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncA << VNodeFlags.UniqueIdOffset),
     "<feFuncA",
     null,
     className === void 0 ? null : className,
@@ -389,7 +389,7 @@ export function feFuncA(className?: string): VNode<{} | null> {
 
 export function feFuncB(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncB >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncB << VNodeFlags.UniqueIdOffset),
     "<feFuncB",
     null,
     className === void 0 ? null : className,
@@ -400,7 +400,7 @@ export function feFuncB(className?: string): VNode<{} | null> {
 
 export function feFuncG(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncG >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncG << VNodeFlags.UniqueIdOffset),
     "<feFuncG",
     null,
     className === void 0 ? null : className,
@@ -411,7 +411,7 @@ export function feFuncG(className?: string): VNode<{} | null> {
 
 export function feFuncR(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncR >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncR << VNodeFlags.UniqueIdOffset),
     "<feFuncR",
     null,
     className === void 0 ? null : className,
@@ -422,7 +422,7 @@ export function feFuncR(className?: string): VNode<{} | null> {
 
 export function feGaussianBlur(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeGaussianBlur >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeGaussianBlur << VNodeFlags.UniqueIdOffset),
     "<feGaussianBlur",
     null,
     className === void 0 ? null : className,
@@ -433,7 +433,7 @@ export function feGaussianBlur(className?: string): VNode<{} | null> {
 
 export function feImage(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeImage >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeImage << VNodeFlags.UniqueIdOffset),
     "<feImage",
     null,
     className === void 0 ? null : className,
@@ -444,7 +444,7 @@ export function feImage(className?: string): VNode<{} | null> {
 
 export function feMerge(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMerge >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMerge << VNodeFlags.UniqueIdOffset),
     "<feMerge",
     null,
     className === void 0 ? null : className,
@@ -455,7 +455,7 @@ export function feMerge(className?: string): VNode<{} | null> {
 
 export function feMergeNode(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMergeNode >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMergeNode << VNodeFlags.UniqueIdOffset),
     "<feMergeNode",
     null,
     className === void 0 ? null : className,
@@ -466,7 +466,7 @@ export function feMergeNode(className?: string): VNode<{} | null> {
 
 export function feMorphology(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMorphology >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMorphology << VNodeFlags.UniqueIdOffset),
     "<feMorphology",
     null,
     className === void 0 ? null : className,
@@ -477,7 +477,7 @@ export function feMorphology(className?: string): VNode<{} | null> {
 
 export function feOffset(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeOffset >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeOffset << VNodeFlags.UniqueIdOffset),
     "<feOffset",
     null,
     className === void 0 ? null : className,
@@ -488,7 +488,7 @@ export function feOffset(className?: string): VNode<{} | null> {
 
 export function fePointLight(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FePointLight >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FePointLight << VNodeFlags.UniqueIdOffset),
     "<fePointLight",
     null,
     className === void 0 ? null : className,
@@ -499,7 +499,7 @@ export function fePointLight(className?: string): VNode<{} | null> {
 
 export function feSpecularLighting(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeSpecularLighting >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeSpecularLighting << VNodeFlags.UniqueIdOffset),
     "<feSpecularLighting",
     null,
     className === void 0 ? null : className,
@@ -510,7 +510,7 @@ export function feSpecularLighting(className?: string): VNode<{} | null> {
 
 export function feSpotLight(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeSpotLight >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeSpotLight << VNodeFlags.UniqueIdOffset),
     "<feSpotLight",
     null,
     className === void 0 ? null : className,
@@ -521,7 +521,7 @@ export function feSpotLight(className?: string): VNode<{} | null> {
 
 export function feTile(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeTile >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeTile << VNodeFlags.UniqueIdOffset),
     "<feTile",
     null,
     className === void 0 ? null : className,
@@ -532,7 +532,7 @@ export function feTile(className?: string): VNode<{} | null> {
 
 export function feTurbulence(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeTurbulence >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeTurbulence << VNodeFlags.UniqueIdOffset),
     "<feTurbulence",
     null,
     className === void 0 ? null : className,
@@ -543,7 +543,7 @@ export function feTurbulence(className?: string): VNode<{} | null> {
 
 export function filter(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Filter >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Filter << VNodeFlags.UniqueIdOffset),
     "<filter",
     null,
     className === void 0 ? null : className,
@@ -554,7 +554,7 @@ export function filter(className?: string): VNode<{} | null> {
 
 export function font(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Font >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Font << VNodeFlags.UniqueIdOffset),
     "<font",
     null,
     className === void 0 ? null : className,
@@ -565,7 +565,7 @@ export function font(className?: string): VNode<{} | null> {
 
 export function fontFace(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFace >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFace << VNodeFlags.UniqueIdOffset),
     "<font-face",
     null,
     className === void 0 ? null : className,
@@ -576,7 +576,7 @@ export function fontFace(className?: string): VNode<{} | null> {
 
 export function fontFaceFormat(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceFormat >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceFormat << VNodeFlags.UniqueIdOffset),
     "<font-face-format",
     null,
     className === void 0 ? null : className,
@@ -587,7 +587,7 @@ export function fontFaceFormat(className?: string): VNode<{} | null> {
 
 export function fontFaceName(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceName >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceName << VNodeFlags.UniqueIdOffset),
     "<font-face-name",
     null,
     className === void 0 ? null : className,
@@ -598,7 +598,7 @@ export function fontFaceName(className?: string): VNode<{} | null> {
 
 export function fontFaceSrc(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceSrc >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceSrc << VNodeFlags.UniqueIdOffset),
     "<font-face-src",
     null,
     className === void 0 ? null : className,
@@ -609,7 +609,7 @@ export function fontFaceSrc(className?: string): VNode<{} | null> {
 
 export function fontFaceUri(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceUri >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceUri << VNodeFlags.UniqueIdOffset),
     "<font-face-uri",
     null,
     className === void 0 ? null : className,
@@ -620,7 +620,7 @@ export function fontFaceUri(className?: string): VNode<{} | null> {
 
 export function foreignObject(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ForeignObject >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ForeignObject << VNodeFlags.UniqueIdOffset),
     "<foreignObject",
     null,
     className === void 0 ? null : className,
@@ -631,7 +631,7 @@ export function foreignObject(className?: string): VNode<{} | null> {
 
 export function g(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.G >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.G << VNodeFlags.UniqueIdOffset),
     "<g",
     null,
     className === void 0 ? null : className,
@@ -642,7 +642,7 @@ export function g(className?: string): VNode<{} | null> {
 
 export function glyph(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Glyph >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Glyph << VNodeFlags.UniqueIdOffset),
     "<glyph",
     null,
     className === void 0 ? null : className,
@@ -653,7 +653,7 @@ export function glyph(className?: string): VNode<{} | null> {
 
 export function glyphRef(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.GlyphRef >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.GlyphRef << VNodeFlags.UniqueIdOffset),
     "<glyphRef",
     null,
     className === void 0 ? null : className,
@@ -664,7 +664,7 @@ export function glyphRef(className?: string): VNode<{} | null> {
 
 export function hatch(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hatch >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hatch << VNodeFlags.UniqueIdOffset),
     "<hatch",
     null,
     className === void 0 ? null : className,
@@ -675,7 +675,7 @@ export function hatch(className?: string): VNode<{} | null> {
 
 export function hatchpath(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hatchpath >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hatchpath << VNodeFlags.UniqueIdOffset),
     "<hatchpath",
     null,
     className === void 0 ? null : className,
@@ -686,7 +686,7 @@ export function hatchpath(className?: string): VNode<{} | null> {
 
 export function hkern(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hkern >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hkern << VNodeFlags.UniqueIdOffset),
     "<hkern",
     null,
     className === void 0 ? null : className,
@@ -697,7 +697,7 @@ export function hkern(className?: string): VNode<{} | null> {
 
 export function image(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Image >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Image << VNodeFlags.UniqueIdOffset),
     "<image",
     null,
     className === void 0 ? null : className,
@@ -708,7 +708,7 @@ export function image(className?: string): VNode<{} | null> {
 
 export function line(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Line >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Line << VNodeFlags.UniqueIdOffset),
     "<line",
     null,
     className === void 0 ? null : className,
@@ -719,7 +719,7 @@ export function line(className?: string): VNode<{} | null> {
 
 export function linearGradient(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.LinearGradient >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.LinearGradient << VNodeFlags.UniqueIdOffset),
     "<linearGradient",
     null,
     className === void 0 ? null : className,
@@ -730,7 +730,7 @@ export function linearGradient(className?: string): VNode<{} | null> {
 
 export function marker(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Marker >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Marker << VNodeFlags.UniqueIdOffset),
     "<marker",
     null,
     className === void 0 ? null : className,
@@ -741,7 +741,7 @@ export function marker(className?: string): VNode<{} | null> {
 
 export function mask(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mask >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mask << VNodeFlags.UniqueIdOffset),
     "<mask",
     null,
     className === void 0 ? null : className,
@@ -752,7 +752,7 @@ export function mask(className?: string): VNode<{} | null> {
 
 export function mesh(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mesh >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mesh << VNodeFlags.UniqueIdOffset),
     "<mesh",
     null,
     className === void 0 ? null : className,
@@ -763,7 +763,7 @@ export function mesh(className?: string): VNode<{} | null> {
 
 export function meshgradient(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshgradient >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshgradient << VNodeFlags.UniqueIdOffset),
     "<meshgradient",
     null,
     className === void 0 ? null : className,
@@ -774,7 +774,7 @@ export function meshgradient(className?: string): VNode<{} | null> {
 
 export function meshpatch(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshpatch >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshpatch << VNodeFlags.UniqueIdOffset),
     "<meshpatch",
     null,
     className === void 0 ? null : className,
@@ -785,7 +785,7 @@ export function meshpatch(className?: string): VNode<{} | null> {
 
 export function meshrow(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshrow >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshrow << VNodeFlags.UniqueIdOffset),
     "<meshrow",
     null,
     className === void 0 ? null : className,
@@ -796,7 +796,7 @@ export function meshrow(className?: string): VNode<{} | null> {
 
 export function metadata(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Metadata >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Metadata << VNodeFlags.UniqueIdOffset),
     "<metadata",
     null,
     className === void 0 ? null : className,
@@ -807,7 +807,7 @@ export function metadata(className?: string): VNode<{} | null> {
 
 export function missingGlyph(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.MissingGlyph >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.MissingGlyph << VNodeFlags.UniqueIdOffset),
     "<missing-glyph",
     null,
     className === void 0 ? null : className,
@@ -818,7 +818,7 @@ export function missingGlyph(className?: string): VNode<{} | null> {
 
 export function mpath(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mpath >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mpath << VNodeFlags.UniqueIdOffset),
     "<mpath",
     null,
     className === void 0 ? null : className,
@@ -829,7 +829,7 @@ export function mpath(className?: string): VNode<{} | null> {
 
 export function path(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Path >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Path << VNodeFlags.UniqueIdOffset),
     "<path",
     null,
     className === void 0 ? null : className,
@@ -840,7 +840,7 @@ export function path(className?: string): VNode<{} | null> {
 
 export function pattern(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Pattern >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Pattern << VNodeFlags.UniqueIdOffset),
     "<pattern",
     null,
     className === void 0 ? null : className,
@@ -851,7 +851,7 @@ export function pattern(className?: string): VNode<{} | null> {
 
 export function polygon(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Polygon >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Polygon << VNodeFlags.UniqueIdOffset),
     "<polygon",
     null,
     className === void 0 ? null : className,
@@ -862,7 +862,7 @@ export function polygon(className?: string): VNode<{} | null> {
 
 export function polyline(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Polyline >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Polyline << VNodeFlags.UniqueIdOffset),
     "<polyline",
     null,
     className === void 0 ? null : className,
@@ -873,7 +873,7 @@ export function polyline(className?: string): VNode<{} | null> {
 
 export function radialGradient(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.RadialGradient >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.RadialGradient << VNodeFlags.UniqueIdOffset),
     "<radialGradient",
     null,
     className === void 0 ? null : className,
@@ -884,7 +884,7 @@ export function radialGradient(className?: string): VNode<{} | null> {
 
 export function rect(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Rect >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Rect << VNodeFlags.UniqueIdOffset),
     "<rect",
     null,
     className === void 0 ? null : className,
@@ -895,7 +895,7 @@ export function rect(className?: string): VNode<{} | null> {
 
 export function set(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Set >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Set << VNodeFlags.UniqueIdOffset),
     "<set",
     null,
     className === void 0 ? null : className,
@@ -906,7 +906,7 @@ export function set(className?: string): VNode<{} | null> {
 
 export function solidcolor(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Solidcolor >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Solidcolor << VNodeFlags.UniqueIdOffset),
     "<solidcolor",
     null,
     className === void 0 ? null : className,
@@ -917,7 +917,7 @@ export function solidcolor(className?: string): VNode<{} | null> {
 
 export function stop(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Stop >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Stop << VNodeFlags.UniqueIdOffset),
     "<stop",
     null,
     className === void 0 ? null : className,
@@ -928,7 +928,7 @@ export function stop(className?: string): VNode<{} | null> {
 
 export function svg(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Svg >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Svg << VNodeFlags.UniqueIdOffset),
     "<svg",
     null,
     className === void 0 ? null : className,
@@ -939,7 +939,7 @@ export function svg(className?: string): VNode<{} | null> {
 
 export function svgSwitch(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Switch >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Switch << VNodeFlags.UniqueIdOffset),
     "<switch",
     null,
     className === void 0 ? null : className,
@@ -950,7 +950,7 @@ export function svgSwitch(className?: string): VNode<{} | null> {
 
 export function symbol(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Symbol >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Symbol << VNodeFlags.UniqueIdOffset),
     "<symbol",
     null,
     className === void 0 ? null : className,
@@ -961,7 +961,7 @@ export function symbol(className?: string): VNode<{} | null> {
 
 export function text(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Text >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Text << VNodeFlags.UniqueIdOffset),
     "<text",
     null,
     className === void 0 ? null : className,
@@ -972,7 +972,7 @@ export function text(className?: string): VNode<{} | null> {
 
 export function textPath(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.TextPath >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.TextPath << VNodeFlags.UniqueIdOffset),
     "<textPath",
     null,
     className === void 0 ? null : className,
@@ -983,7 +983,7 @@ export function textPath(className?: string): VNode<{} | null> {
 
 export function title(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Title >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Title << VNodeFlags.UniqueIdOffset),
     "<title",
     null,
     className === void 0 ? null : className,
@@ -994,7 +994,7 @@ export function title(className?: string): VNode<{} | null> {
 
 export function tref(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Tref >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Tref << VNodeFlags.UniqueIdOffset),
     "<tref",
     null,
     className === void 0 ? null : className,
@@ -1005,7 +1005,7 @@ export function tref(className?: string): VNode<{} | null> {
 
 export function tspan(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Tspan >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Tspan << VNodeFlags.UniqueIdOffset),
     "<tspan",
     null,
     className === void 0 ? null : className,
@@ -1016,7 +1016,7 @@ export function tspan(className?: string): VNode<{} | null> {
 
 export function use(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Use >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Use << VNodeFlags.UniqueIdOffset),
     "<use",
     null,
     className === void 0 ? null : className,
@@ -1027,7 +1027,7 @@ export function use(className?: string): VNode<{} | null> {
 
 export function view(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.View >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.View << VNodeFlags.UniqueIdOffset),
     "<view",
     null,
     className === void 0 ? null : className,
@@ -1038,7 +1038,7 @@ export function view(className?: string): VNode<{} | null> {
 
 export function vkern(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Vkern >> VNodeFlags.UniqueIdOffset),
+    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Vkern << VNodeFlags.UniqueIdOffset),
     "<vkern",
     null,
     className === void 0 ? null : className,
