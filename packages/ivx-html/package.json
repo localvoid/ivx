@@ -4,7 +4,7 @@
   "module": "dist/js/index.js",
   "typings": "dist/typings/index.d.ts",
   "sideEffects": false,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "ivx factories for HTML elements",
   "license": "MIT",
   "author": {
@@ -38,9 +38,9 @@
     "lint": "../../node_modules/.bin/tslint --project ./tsconfig.json"
   },
   "peerDependencies": {
-    "ivx": "^0.1.0"
+    "ivx": "^0.2.0"
   },
   "devDependencies": {
-    "ivx": "^0.1.0"
+    "ivx": "^0.2.0"
   }
 }
