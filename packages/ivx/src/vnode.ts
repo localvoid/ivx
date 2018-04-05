@@ -152,6 +152,23 @@ export class VNode<P = any> {
 export type VNodeChildren = VNodeChildrenArray | VNode<any> | string | number | null;
 export interface VNodeChildrenArray extends Array<VNodeChildren> { }
 
+/**
+ * raw creates a VNode with a raw text.
+ *
+ * @param text raw text.
+ * @returns raw text VNode.
+ */
+export function raw(text: string): VNode<null> {
+  return new VNode<null>(
+    VNodeFlags.RawText,
+    null,
+    null,
+    null,
+    text,
+    null,
+  );
+}
+
 export interface ElementOptions {
   readonly void?: boolean;
 }

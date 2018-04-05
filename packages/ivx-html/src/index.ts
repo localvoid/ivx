@@ -1,5 +1,7 @@
 import { VNode, VNodeFlags } from "ivx";
 
+export const DOCTYPE = "<!doctype html>";
+
 const enum TagId {
   A = 1,
   Abbr = 2,

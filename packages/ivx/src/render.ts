@@ -105,27 +105,31 @@ function renderChildren(children: VNodeChildren, context: {}): string {
  */
 function renderVNode(node: VNode<any>, context: {}): string {
   const flags = node._flags;
-  if ((flags & VNodeFlags.Element) !== 0) {
-    let result = renderOpenElement(node);
-    if ((flags & VNodeFlags.VoidElement) === 0) {
-      const children = node._children;
-      if (children !== null) {
-        let childrenString;
-        if (typeof children === "string") {
-          childrenString = escapeText(children);
-        } else {
-          childrenString = renderChildren(children, context);
-        }
-        if ((flags & VNodeFlags.NewLineEatingElement) !== 0) {
-          if (childrenString.length > 0 && childrenString.charCodeAt(0) === 10) { // "\n"
-            result += "\n";
+  if ((flags & (VNodeFlags.RawText | VNodeFlags.Element)) !== 0) {
+    if ((flags & VNodeFlags.RawText) !== 0) {
+      return node._children as string;
+    } else {
+      let result = renderOpenElement(node);
+      if ((flags & VNodeFlags.VoidElement) === 0) {
+        const children = node._children;
+        if (children !== null) {
+          let childrenString;
+          if (typeof children === "string") {
+            childrenString = escapeText(children);
+          } else {
+            childrenString = renderChildren(children, context);
           }
+          if ((flags & VNodeFlags.NewLineEatingElement) !== 0) {
+            if (childrenString.length > 0 && childrenString.charCodeAt(0) === 10) { // "\n"
+              result += "\n";
+            }
+          }
+          result += childrenString;
         }
-        result += childrenString;
+        result += node._close;
       }
-      result += node._close;
+      return result;
     }
-    return result;
   } else {
     if ((flags & VNodeFlags.LinkedBlueprint) === 0) {
       let root;
@@ -167,11 +171,11 @@ function patchDirtyCheck(children: BlueprintChildren, context: {}): string {
 
   const src = children.src as VNode;
   const srcFlags = src._flags;
-  if ((srcFlags & VNodeFlags.Element) !== 0) {
-    if ((srcFlags & VNodeFlags.VoidElement) === 0) {
-      return children.string + patchDirtyCheck(children.children, context) + src._close;
-    } else {
+  if ((srcFlags & (VNodeFlags.RawText | VNodeFlags.Element)) !== 0) {
+    if ((srcFlags & (VNodeFlags.RawText | VNodeFlags.VoidElement)) !== 0) {
       return children.string;
+    } else {
+      return children.string + patchDirtyCheck(children.children, context) + src._close;
     }
   } else {
     if ((srcFlags & (VNodeFlags.Connect | VNodeFlags.Component)) !== 0) {
@@ -241,18 +245,22 @@ function patch(a: BlueprintNode, b: VNode<any> | string | number, context: {}): 
       const aFlags = aVNode._flags;
       const bFlags = b._flags;
       if (((aFlags ^ bFlags) & VNodeFlags.Syncable) === 0) {
-        if ((aFlags & VNodeFlags.Element) !== 0) {
-          const openString = (
-            (aVNode._props === b._props) &&
-            (aVNode._style === b._style) &&
-            (aVNode._className === b._className)
-          ) ? a.string
-            : renderOpenElement(b);
+        if ((aFlags & (VNodeFlags.RawText | VNodeFlags.Element)) !== 0) {
+          if ((aFlags & VNodeFlags.RawText) !== 0) {
+            return b._children as string;
+          } else {
+            const openString = (
+              (aVNode._props === b._props) &&
+              (aVNode._style === b._style) &&
+              (aVNode._className === b._className)
+            ) ? a.string
+              : renderOpenElement(b);
 
-          if ((aFlags & VNodeFlags.VoidElement) === 0) {
-            return openString + patchChildren(a.children, b._children, context) + aVNode._close;
+            if ((aFlags & VNodeFlags.VoidElement) === 0) {
+              return openString + patchChildren(a.children, b._children, context) + aVNode._close;
+            }
+            return openString;
           }
-          return openString;
         } else {
           if ((bFlags & (VNodeFlags.Component | VNodeFlags.Connect)) !== 0) {
             const nextProps = b._props;

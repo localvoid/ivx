@@ -127,16 +127,25 @@ function createBlueprintFromChildren(children: VNodeChildren, context: {}): Crea
 function createBlueprintFromVNode(vnode: VNode<any>, context: {}): CreateResult {
   const flags = vnode._flags;
 
-  if ((flags & VNodeFlags.Element) !== 0) {
-    const openString = flattenString(renderOpenElement(vnode));
-    const { children, deepConnect, string } = createBlueprintFromChildren(vnode._children, context);
-    return {
-      children: new BlueprintNode(BlueprintNodeFlags.VNode, vnode, children, openString, null),
-      deepConnect,
-      string: ((flags & VNodeFlags.VoidElement) === 0) ?
-        flattenString(openString + string + vnode._close) :
-        openString,
-    };
+  if ((flags & (VNodeFlags.RawText | VNodeFlags.Element)) !== 0) {
+    if ((flags & VNodeFlags.RawText) !== 0) {
+      const text = vnode._children as string;
+      return {
+        children: new BlueprintNode(BlueprintNodeFlags.VNode, vnode, null, text, null),
+        deepConnect: false,
+        string: text,
+      };
+    } else {
+      const openString = flattenString(renderOpenElement(vnode));
+      const { children, deepConnect, string } = createBlueprintFromChildren(vnode._children, context);
+      return {
+        children: new BlueprintNode(BlueprintNodeFlags.VNode, vnode, children, openString, null),
+        deepConnect,
+        string: ((flags & VNodeFlags.VoidElement) === 0) ?
+          flattenString(openString + string + vnode._close) :
+          openString,
+      };
+    }
   } else { // Component | Connect | UpdateContext
     const props = vnode._props;
     if ((flags & (VNodeFlags.Connect | VNodeFlags.UpdateContext)) !== 0) {

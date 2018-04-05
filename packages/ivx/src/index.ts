@@ -1,6 +1,6 @@
-export { DOCTYPE } from "./misc";
 export {
   VNodeFlags, VNode, VNodeChildren,
+  raw,
   ElementOptions, element,
   ComponentDescriptor, ComponentOptions, component,
   context,
