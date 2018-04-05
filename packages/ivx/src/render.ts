@@ -8,7 +8,7 @@ import { escapeAttributeValue, escapeText } from "./escape";
  * @param attrs Element attributes.
  * @returns Element attributes in string format.
  */
-function renderElementAttrs(attrs: { [key: string]: string }): string {
+export function renderElementAttrs(attrs: { [key: string]: string }): string {
   let result = "";
 
   for (const key in attrs) {
@@ -33,7 +33,7 @@ function renderElementAttrs(attrs: { [key: string]: string }): string {
  * @param style Element styles.
  * @returns Element styles in string format.
  */
-function renderElementStyle(style: { [key: string]: any }): string {
+export function renderElementStyle(style: { [key: string]: any }): string {
   let result = ` style="`;
   let semicolon = false;
   for (const key in style) {

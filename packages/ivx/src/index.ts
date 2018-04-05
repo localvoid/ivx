@@ -1,11 +1,11 @@
 export {
   VNodeFlags, VNode, VNodeChildren,
   raw,
-  ElementOptions, element,
   ComponentDescriptor, ComponentOptions, component,
   context,
   ConnectDescriptor, connect,
 } from "./vnode";
+export { ElementOptions, element } from "./custom_element";
 export {
   BlueprintNodeFlags, BlueprintNode, BlueprintChildren,
   createBlueprint, componentWithBlueprint,

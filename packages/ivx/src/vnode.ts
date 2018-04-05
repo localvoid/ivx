@@ -169,36 +169,6 @@ export function raw(text: string): VNode<null> {
   );
 }
 
-export interface ElementOptions {
-  readonly void?: boolean;
-}
-
-let nextElementId = 1;
-
-export function element<T>(tagName: string, options?: ElementOptions): () => VNode<T> {
-  let flags = VNodeFlags.Element | (nextElementId++ << VNodeFlags.UniqueIdOffset);
-  const openString = flattenString(`<${tagName}`);
-  let voidElement = false;
-  if (options !== void 0) {
-    if (options.void === true) {
-      flags |= VNodeFlags.VoidElement;
-      voidElement = true;
-    }
-  }
-  const closeString = voidElement ? "" : flattenString(`</${tagName}>`);
-
-  return function (className?: string) {
-    return new VNode<T>(
-      flags,
-      openString,
-      null,
-      className === void 0 ? null : className,
-      null,
-      closeString,
-    );
-  };
-}
-
 /**
  * Component descriptor.
  */
