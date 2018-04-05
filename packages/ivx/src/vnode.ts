@@ -1,5 +1,4 @@
 import { BlueprintNode } from "./blueprint";
-import { flattenString } from "./flatten";
 
 /**
  * VNode flags.
