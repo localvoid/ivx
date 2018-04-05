@@ -9,7 +9,7 @@ export interface ElementOptions {
 
 let nextElementId = 1;
 
-export function element<T>(tagName: string, options?: ElementOptions): () => VNode<T> {
+export function element<T>(tagName: string, options?: ElementOptions): (className?: string) => VNode<T> {
   let flags = VNodeFlags.Element | (nextElementId++ << VNodeFlags.UniqueIdOffset);
   let openString = `<${tagName}`;
   let voidElement = false;
