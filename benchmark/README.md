@@ -6,10 +6,22 @@ Install all dependencies.
 $ yarn
 ```
 
-Compile from TypeScript.
+Compile dependencies.
+
+```sh
+$ lerna run dist
+```
+
+Compile TypeScript.
 
 ```sh
 $ npm run dist
+```
+
+Run basic benchmarks.
+
+```sh
+$ node ./dist/benchmark.js
 ```
 
 Launch HTTP server.
@@ -22,9 +34,4 @@ Run web benchmarks.
 
 ```sh
 $ ./benchmark.sh
-```
-
-Run basic benchmarks.
-```sh
-$ node ./dist/benchmark.js
 ```
