@@ -58,12 +58,6 @@ const BannerItem = component<string>((img) => {
 });
 
 const Banner = connect<any[], { bannerData: any[] }>(
-  (data) => {
-    return h.div().s(BannerStyles.container).c(
-      h.h2().c("ivi Banner: "),
-      h.div().s(BannerStyles.list)
-        .c(data.map((item: any, idx: number) => BannerItem(item.img).k(idx))));
-  },
   (prev, props, context) => {
     const bannerData = context.bannerData;
     if (prev !== null && prev === bannerData) {
@@ -71,29 +65,27 @@ const Banner = connect<any[], { bannerData: any[] }>(
     }
     return bannerData;
   },
+  (data) => {
+    return h.div().s(BannerStyles.container).c([
+      h.h2().c("ivi Banner: "),
+      h.div().s(BannerStyles.list)
+        .c(data.map((item: any, idx: number) => BannerItem(item.img)))]);
+  },
 );
 
 const ListItem = component<{ href: string, img: string, title: string, price: number }>(
   (item) => {
-    return h.a().s(ListStyles.item).a({ href: item.href }).c(
+    return h.a().s(ListStyles.item).a({ href: item.href }).c([
       h.img().s(ListStyles.itemImg),
       h.p().s(ListStyles.itemTitle).c(item.title),
       h.p().s(ListStyles.itemPrice).c(
         h.span().c(`price: ${item.price}`),
       ),
-    );
+    ]);
   },
 );
 
 const List = connect<any[], { listData: any[] }>(
-  (data) => {
-    return h.div().s(ListStyles.container).c(
-      h.h2().c("iviList "),
-      h.div().s(ListStyles.list).c(
-        data.map((item: any, idx: number) => ListItem(item).k(idx)),
-      ),
-    );
-  },
   (prev, props, context) => {
     const listData = context.listData;
     if (prev !== null && prev === listData) {
@@ -101,9 +93,17 @@ const List = connect<any[], { listData: any[] }>(
     }
     return listData;
   },
+  (data) => {
+    return h.div().s(ListStyles.container).c([
+      h.h2().c("iviList "),
+      h.div().s(ListStyles.list).c(
+        data.map((item: any, idx: number) => ListItem(item)),
+      ),
+    ]);
+  },
 );
 
 export const raxApp = component(() => {
   return h.div("app")
-    .c(Banner(), List());
+    .c([Banner(), List()]);
 });

@@ -24,13 +24,10 @@ function render(
 function createBlueprint(
   node: VNode<any>,
   context: {} = {},
-  blueprint?: BlueprintNode,
 ): BlueprintNode;
 ```
 
-`createBlueprint()` function creates a blueprint that can be used to optimize rendering. When `blueprint`
-parameter is specified, it will try to reuse existing blueprint nodes from the specified blueprint to reduce memory
-usage.
+`createBlueprint()` function creates a blueprint that can be used to optimize rendering.
 
 ```ts
 function renderWithBlueprint(
@@ -49,7 +46,7 @@ rendering string from scratch, it will apply diff/patch algorithm on blueprint.
 function componentWithBlueprint<P>(
   node: VNode<P>,
   context?: {},
-): (props: P) => VNode<P>;
+): (props: P) => VNodeChildren;
 ```
 
 Example:

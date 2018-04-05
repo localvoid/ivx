@@ -1,7 +1,7 @@
-import { createBlueprint, renderWithBlueprint } from "ivx";
+import { render } from "ivx";
 import { raxApp } from "./ui";
 
-const RaxBlueprint = createBlueprint(raxApp(), { bannerData: [], listData: [] });
+// const RaxBlueprint = createBlueprint(raxApp(), { bannerData: [], listData: [] });
 
 const listData = Array.from({ length: 100 })
   .map((undef, i) => {
@@ -22,9 +22,9 @@ const bannerData = Array.from({ length: 6 })
   });
 
 export function runRax() {
-  return renderWithBlueprint(
+  return render(
     raxApp(),
-    RaxBlueprint,
+    // RaxBlueprint,
     { bannerData, listData },
   );
 }

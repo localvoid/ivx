@@ -1,15 +1,5 @@
 import { VNode, VNodeFlags } from "ivx";
 
-/**
- * Create a VNode representing a Text node.
- *
- * @param content Text content.
- * @returns VNode object.
- */
-export function t(content: string | number | null): VNode<null> {
-  return new VNode<null>(VNodeFlags.Text, null, null, null, content, null);
-}
-
 const enum TagId {
   A = 1,
   Abbr = 2,
@@ -161,7 +151,7 @@ const enum TagId {
 // HTML Elements:
 export function a(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.A >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.A >> VNodeFlags.UniqueIdOffset),
     "<a",
     null,
     className === undefined ? null : className,
@@ -171,7 +161,7 @@ export function a(className?: string): VNode<{} | null> {
 }
 export function abbr(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Abbr >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Abbr >> VNodeFlags.UniqueIdOffset),
     "<abbr",
     null,
     className === undefined ? null : className,
@@ -181,7 +171,7 @@ export function abbr(className?: string): VNode<{} | null> {
 }
 export function acronym(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Acronym >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Acronym >> VNodeFlags.UniqueIdOffset),
     "<acronym",
     null,
     className === undefined ? null : className,
@@ -191,7 +181,7 @@ export function acronym(className?: string): VNode<{} | null> {
 }
 export function address(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Address >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Address >> VNodeFlags.UniqueIdOffset),
     "<address",
     null,
     className === undefined ? null : className,
@@ -201,7 +191,7 @@ export function address(className?: string): VNode<{} | null> {
 }
 export function area(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Area >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Area >> VNodeFlags.UniqueIdOffset),
     "<area",
     null,
     className === undefined ? null : className,
@@ -211,7 +201,7 @@ export function area(className?: string): VNode<{} | null> {
 }
 export function article(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Article >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Article >> VNodeFlags.UniqueIdOffset),
     "<article",
     null,
     className === undefined ? null : className,
@@ -221,7 +211,7 @@ export function article(className?: string): VNode<{} | null> {
 }
 export function aside(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Aside >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Aside >> VNodeFlags.UniqueIdOffset),
     "<aside",
     null,
     className === undefined ? null : className,
@@ -231,7 +221,7 @@ export function aside(className?: string): VNode<{} | null> {
 }
 export function b(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.B >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.B >> VNodeFlags.UniqueIdOffset),
     "<b",
     null,
     className === undefined ? null : className,
@@ -241,7 +231,7 @@ export function b(className?: string): VNode<{} | null> {
 }
 export function base(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Base >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Base >> VNodeFlags.UniqueIdOffset),
     "<base",
     null,
     className === undefined ? null : className,
@@ -251,7 +241,7 @@ export function base(className?: string): VNode<{} | null> {
 }
 export function basefont(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Basefont >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Basefont >> VNodeFlags.UniqueIdOffset),
     "<basefont",
     null,
     className === undefined ? null : className,
@@ -261,7 +251,7 @@ export function basefont(className?: string): VNode<{} | null> {
 }
 export function bdo(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Bdo >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Bdo >> VNodeFlags.UniqueIdOffset),
     "<bdo",
     null,
     className === undefined ? null : className,
@@ -271,7 +261,7 @@ export function bdo(className?: string): VNode<{} | null> {
 }
 export function big(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Big >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Big >> VNodeFlags.UniqueIdOffset),
     "<big",
     null,
     className === undefined ? null : className,
@@ -281,7 +271,7 @@ export function big(className?: string): VNode<{} | null> {
 }
 export function blockquote(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Blockquote >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Blockquote >> VNodeFlags.UniqueIdOffset),
     "<blockquote",
     null,
     className === undefined ? null : className,
@@ -291,7 +281,7 @@ export function blockquote(className?: string): VNode<{} | null> {
 }
 export function body(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Body >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Body >> VNodeFlags.UniqueIdOffset),
     "<body",
     null,
     className === undefined ? null : className,
@@ -301,7 +291,7 @@ export function body(className?: string): VNode<{} | null> {
 }
 export function br(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Br >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Br >> VNodeFlags.UniqueIdOffset),
     "<br",
     null,
     className === undefined ? null : className,
@@ -311,7 +301,7 @@ export function br(className?: string): VNode<{} | null> {
 }
 export function button(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.ButtonElement | (TagId.Button >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Button >> VNodeFlags.UniqueIdOffset),
     "<button type=\"button\"",
     null,
     className === undefined ? null : className,
@@ -321,7 +311,7 @@ export function button(className?: string): VNode<{} | null> {
 }
 export function buttonSubmit(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.ButtonElement | (TagId.ButtonSubmit >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.ButtonSubmit >> VNodeFlags.UniqueIdOffset),
     "<button",
     null,
     className === undefined ? null : className,
@@ -331,7 +321,7 @@ export function buttonSubmit(className?: string): VNode<{} | null> {
 }
 export function buttonReset(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.ButtonElement | (TagId.ButtonReset >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.ButtonReset >> VNodeFlags.UniqueIdOffset),
     "<button type=\"reset\"",
     null,
     className === undefined ? null : className,
@@ -341,7 +331,7 @@ export function buttonReset(className?: string): VNode<{} | null> {
 }
 export function canvas(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Canvas >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Canvas >> VNodeFlags.UniqueIdOffset),
     "<canvas",
     null,
     className === undefined ? null : className,
@@ -351,7 +341,7 @@ export function canvas(className?: string): VNode<{} | null> {
 }
 export function caption(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Caption >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Caption >> VNodeFlags.UniqueIdOffset),
     "<caption",
     null,
     className === undefined ? null : className,
@@ -361,7 +351,7 @@ export function caption(className?: string): VNode<{} | null> {
 }
 export function center(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Center >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Center >> VNodeFlags.UniqueIdOffset),
     "<center",
     null,
     className === undefined ? null : className,
@@ -371,7 +361,7 @@ export function center(className?: string): VNode<{} | null> {
 }
 export function cite(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Cite >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Cite >> VNodeFlags.UniqueIdOffset),
     "<cite",
     null,
     className === undefined ? null : className,
@@ -381,7 +371,7 @@ export function cite(className?: string): VNode<{} | null> {
 }
 export function code(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Code >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Code >> VNodeFlags.UniqueIdOffset),
     "<code",
     null,
     className === undefined ? null : className,
@@ -391,7 +381,7 @@ export function code(className?: string): VNode<{} | null> {
 }
 export function col(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Col >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Col >> VNodeFlags.UniqueIdOffset),
     "<col",
     null,
     className === undefined ? null : className,
@@ -401,7 +391,7 @@ export function col(className?: string): VNode<{} | null> {
 }
 export function colgroup(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Colgroup >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Colgroup >> VNodeFlags.UniqueIdOffset),
     "<colgroup",
     null,
     className === undefined ? null : className,
@@ -411,7 +401,7 @@ export function colgroup(className?: string): VNode<{} | null> {
 }
 export function data(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Data >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Data >> VNodeFlags.UniqueIdOffset),
     "<data",
     null,
     className === undefined ? null : className,
@@ -421,7 +411,7 @@ export function data(className?: string): VNode<{} | null> {
 }
 export function datalist(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Datalist >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Datalist >> VNodeFlags.UniqueIdOffset),
     "<datalist",
     null,
     className === undefined ? null : className,
@@ -431,7 +421,7 @@ export function datalist(className?: string): VNode<{} | null> {
 }
 export function dd(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Dd >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Dd >> VNodeFlags.UniqueIdOffset),
     "<dd",
     null,
     className === undefined ? null : className,
@@ -441,7 +431,7 @@ export function dd(className?: string): VNode<{} | null> {
 }
 export function del(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Del >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Del >> VNodeFlags.UniqueIdOffset),
     "<del",
     null,
     className === undefined ? null : className,
@@ -451,7 +441,7 @@ export function del(className?: string): VNode<{} | null> {
 }
 export function dfn(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Dfn >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Dfn >> VNodeFlags.UniqueIdOffset),
     "<dfn",
     null,
     className === undefined ? null : className,
@@ -461,7 +451,7 @@ export function dfn(className?: string): VNode<{} | null> {
 }
 export function dir(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Dir >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Dir >> VNodeFlags.UniqueIdOffset),
     "<dir",
     null,
     className === undefined ? null : className,
@@ -471,7 +461,7 @@ export function dir(className?: string): VNode<{} | null> {
 }
 export function div(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Div >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Div >> VNodeFlags.UniqueIdOffset),
     "<div",
     null,
     className === undefined ? null : className,
@@ -481,7 +471,7 @@ export function div(className?: string): VNode<{} | null> {
 }
 export function dl(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Dl >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Dl >> VNodeFlags.UniqueIdOffset),
     "<dl",
     null,
     className === undefined ? null : className,
@@ -491,7 +481,7 @@ export function dl(className?: string): VNode<{} | null> {
 }
 export function dt(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Dt >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Dt >> VNodeFlags.UniqueIdOffset),
     "<dt",
     null,
     className === undefined ? null : className,
@@ -501,7 +491,7 @@ export function dt(className?: string): VNode<{} | null> {
 }
 export function em(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Em >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Em >> VNodeFlags.UniqueIdOffset),
     "<em",
     null,
     className === undefined ? null : className,
@@ -511,7 +501,7 @@ export function em(className?: string): VNode<{} | null> {
 }
 export function embed(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Embed >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Embed >> VNodeFlags.UniqueIdOffset),
     "<embed",
     null,
     className === undefined ? null : className,
@@ -521,7 +511,7 @@ export function embed(className?: string): VNode<{} | null> {
 }
 export function fieldset(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Fieldset >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Fieldset >> VNodeFlags.UniqueIdOffset),
     "<fieldset",
     null,
     className === undefined ? null : className,
@@ -531,7 +521,7 @@ export function fieldset(className?: string): VNode<{} | null> {
 }
 export function figcaption(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Figcaption >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Figcaption >> VNodeFlags.UniqueIdOffset),
     "<figcaption",
     null,
     className === undefined ? null : className,
@@ -541,7 +531,7 @@ export function figcaption(className?: string): VNode<{} | null> {
 }
 export function figure(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Figure >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Figure >> VNodeFlags.UniqueIdOffset),
     "<figure",
     null,
     className === undefined ? null : className,
@@ -551,7 +541,7 @@ export function figure(className?: string): VNode<{} | null> {
 }
 export function font(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Font >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Font >> VNodeFlags.UniqueIdOffset),
     "<font",
     null,
     className === undefined ? null : className,
@@ -561,7 +551,7 @@ export function font(className?: string): VNode<{} | null> {
 }
 export function footer(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Footer >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Footer >> VNodeFlags.UniqueIdOffset),
     "<footer",
     null,
     className === undefined ? null : className,
@@ -571,7 +561,7 @@ export function footer(className?: string): VNode<{} | null> {
 }
 export function form(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Font >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Font >> VNodeFlags.UniqueIdOffset),
     "<form",
     null,
     className === undefined ? null : className,
@@ -581,7 +571,7 @@ export function form(className?: string): VNode<{} | null> {
 }
 export function frame(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Frame >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Frame >> VNodeFlags.UniqueIdOffset),
     "<frame",
     null,
     className === undefined ? null : className,
@@ -591,7 +581,7 @@ export function frame(className?: string): VNode<{} | null> {
 }
 export function frameset(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Frameset >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Frameset >> VNodeFlags.UniqueIdOffset),
     "<frameset",
     null,
     className === undefined ? null : className,
@@ -601,7 +591,7 @@ export function frameset(className?: string): VNode<{} | null> {
 }
 export function h1(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.H1 >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.H1 >> VNodeFlags.UniqueIdOffset),
     "<h1",
     null,
     className === undefined ? null : className,
@@ -611,7 +601,7 @@ export function h1(className?: string): VNode<{} | null> {
 }
 export function h2(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.H2 >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.H2 >> VNodeFlags.UniqueIdOffset),
     "<h2",
     null,
     className === undefined ? null : className,
@@ -621,7 +611,7 @@ export function h2(className?: string): VNode<{} | null> {
 }
 export function h3(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.H3 >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.H3 >> VNodeFlags.UniqueIdOffset),
     "<h3",
     null,
     className === undefined ? null : className,
@@ -631,7 +621,7 @@ export function h3(className?: string): VNode<{} | null> {
 }
 export function h4(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.H4 >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.H4 >> VNodeFlags.UniqueIdOffset),
     "<h4",
     null,
     className === undefined ? null : className,
@@ -641,7 +631,7 @@ export function h4(className?: string): VNode<{} | null> {
 }
 export function h5(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.H5 >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.H5 >> VNodeFlags.UniqueIdOffset),
     "<h5",
     null,
     className === undefined ? null : className,
@@ -651,7 +641,7 @@ export function h5(className?: string): VNode<{} | null> {
 }
 export function h6(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.H6 >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.H6 >> VNodeFlags.UniqueIdOffset),
     "<h6",
     null,
     className === undefined ? null : className,
@@ -661,7 +651,7 @@ export function h6(className?: string): VNode<{} | null> {
 }
 export function head(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Head >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Head >> VNodeFlags.UniqueIdOffset),
     "<head",
     null,
     className === undefined ? null : className,
@@ -671,7 +661,7 @@ export function head(className?: string): VNode<{} | null> {
 }
 export function header(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Header >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Header >> VNodeFlags.UniqueIdOffset),
     "<header",
     null,
     className === undefined ? null : className,
@@ -681,7 +671,7 @@ export function header(className?: string): VNode<{} | null> {
 }
 export function hgroup(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Hgroup >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Hgroup >> VNodeFlags.UniqueIdOffset),
     "<hgroup",
     null,
     className === undefined ? null : className,
@@ -691,7 +681,7 @@ export function hgroup(className?: string): VNode<{} | null> {
 }
 export function hr(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Hr >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Hr >> VNodeFlags.UniqueIdOffset),
     "<hr",
     null,
     className === undefined ? null : className,
@@ -701,7 +691,7 @@ export function hr(className?: string): VNode<{} | null> {
 }
 export function html(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Html >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Html >> VNodeFlags.UniqueIdOffset),
     "<html",
     null,
     className === undefined ? null : className,
@@ -711,7 +701,7 @@ export function html(className?: string): VNode<{} | null> {
 }
 export function i(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.I >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.I >> VNodeFlags.UniqueIdOffset),
     "<i",
     null,
     className === undefined ? null : className,
@@ -721,7 +711,7 @@ export function i(className?: string): VNode<{} | null> {
 }
 export function iframe(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Iframe >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Iframe >> VNodeFlags.UniqueIdOffset),
     "<iframe",
     null,
     className === undefined ? null : className,
@@ -731,7 +721,7 @@ export function iframe(className?: string): VNode<{} | null> {
 }
 export function img(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Img >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Img >> VNodeFlags.UniqueIdOffset),
     "<img",
     null,
     className === undefined ? null : className,
@@ -741,7 +731,7 @@ export function img(className?: string): VNode<{} | null> {
 }
 export function ins(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Ins >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Ins >> VNodeFlags.UniqueIdOffset),
     "<ins",
     null,
     className === undefined ? null : className,
@@ -751,7 +741,7 @@ export function ins(className?: string): VNode<{} | null> {
 }
 export function kbd(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Kbd >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Kbd >> VNodeFlags.UniqueIdOffset),
     "<kbd",
     null,
     className === undefined ? null : className,
@@ -761,7 +751,7 @@ export function kbd(className?: string): VNode<{} | null> {
 }
 export function label(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Label >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Label >> VNodeFlags.UniqueIdOffset),
     "<label",
     null,
     className === undefined ? null : className,
@@ -771,7 +761,7 @@ export function label(className?: string): VNode<{} | null> {
 }
 export function legend(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Legend >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Legend >> VNodeFlags.UniqueIdOffset),
     "<legend",
     null,
     className === undefined ? null : className,
@@ -781,7 +771,7 @@ export function legend(className?: string): VNode<{} | null> {
 }
 export function li(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Li >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Li >> VNodeFlags.UniqueIdOffset),
     "<li",
     null,
     className === undefined ? null : className,
@@ -791,7 +781,7 @@ export function li(className?: string): VNode<{} | null> {
 }
 export function link(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Link >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Link >> VNodeFlags.UniqueIdOffset),
     "<link",
     null,
     className === undefined ? null : className,
@@ -801,7 +791,7 @@ export function link(className?: string): VNode<{} | null> {
 }
 export function listing(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.NewLineEatingElement | (TagId.Listing >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.NewLineEatingElement | (TagId.Listing >> VNodeFlags.UniqueIdOffset),
     "<listing",
     null,
     className === undefined ? null : className,
@@ -811,7 +801,7 @@ export function listing(className?: string): VNode<{} | null> {
 }
 export function main(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Main >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Main >> VNodeFlags.UniqueIdOffset),
     "<main",
     null,
     className === undefined ? null : className,
@@ -821,7 +811,7 @@ export function main(className?: string): VNode<{} | null> {
 }
 export function map(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Map >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Map >> VNodeFlags.UniqueIdOffset),
     "<map",
     null,
     className === undefined ? null : className,
@@ -831,7 +821,7 @@ export function map(className?: string): VNode<{} | null> {
 }
 export function mark(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Mark >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Mark >> VNodeFlags.UniqueIdOffset),
     "<mark",
     null,
     className === undefined ? null : className,
@@ -841,7 +831,7 @@ export function mark(className?: string): VNode<{} | null> {
 }
 export function menu(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Menu >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Menu >> VNodeFlags.UniqueIdOffset),
     "<menu",
     null,
     className === undefined ? null : className,
@@ -851,7 +841,7 @@ export function menu(className?: string): VNode<{} | null> {
 }
 export function meta(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Meta >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Meta >> VNodeFlags.UniqueIdOffset),
     "<meta",
     null,
     className === undefined ? null : className,
@@ -861,7 +851,7 @@ export function meta(className?: string): VNode<{} | null> {
 }
 export function meter(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Meter >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Meter >> VNodeFlags.UniqueIdOffset),
     "<meter",
     null,
     className === undefined ? null : className,
@@ -871,7 +861,7 @@ export function meter(className?: string): VNode<{} | null> {
 }
 export function nav(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Nav >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Nav >> VNodeFlags.UniqueIdOffset),
     "<nav",
     null,
     className === undefined ? null : className,
@@ -881,7 +871,7 @@ export function nav(className?: string): VNode<{} | null> {
 }
 export function nobr(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Nobr >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Nobr >> VNodeFlags.UniqueIdOffset),
     "<nobr",
     null,
     className === undefined ? null : className,
@@ -891,7 +881,7 @@ export function nobr(className?: string): VNode<{} | null> {
 }
 export function noframes(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Noframes >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Noframes >> VNodeFlags.UniqueIdOffset),
     "<noframes",
     null,
     className === undefined ? null : className,
@@ -901,7 +891,7 @@ export function noframes(className?: string): VNode<{} | null> {
 }
 export function noscript(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Noscript >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Noscript >> VNodeFlags.UniqueIdOffset),
     "<noscript",
     null,
     className === undefined ? null : className,
@@ -911,7 +901,7 @@ export function noscript(className?: string): VNode<{} | null> {
 }
 export function object(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Object >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Object >> VNodeFlags.UniqueIdOffset),
     "<object",
     null,
     className === undefined ? null : className,
@@ -921,7 +911,7 @@ export function object(className?: string): VNode<{} | null> {
 }
 export function ol(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Ol >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Ol >> VNodeFlags.UniqueIdOffset),
     "<ol",
     null,
     className === undefined ? null : className,
@@ -931,7 +921,7 @@ export function ol(className?: string): VNode<{} | null> {
 }
 export function optgroup(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Optgroup >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Optgroup >> VNodeFlags.UniqueIdOffset),
     "<optgroup",
     null,
     className === undefined ? null : className,
@@ -941,7 +931,7 @@ export function optgroup(className?: string): VNode<{} | null> {
 }
 export function option(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Option >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Option >> VNodeFlags.UniqueIdOffset),
     "<option",
     null,
     className === undefined ? null : className,
@@ -951,7 +941,7 @@ export function option(className?: string): VNode<{} | null> {
 }
 export function p(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.P >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.P >> VNodeFlags.UniqueIdOffset),
     "<p",
     null,
     className === undefined ? null : className,
@@ -961,7 +951,7 @@ export function p(className?: string): VNode<{} | null> {
 }
 export function param(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Param >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Param >> VNodeFlags.UniqueIdOffset),
     "<param",
     null,
     className === undefined ? null : className,
@@ -971,7 +961,7 @@ export function param(className?: string): VNode<{} | null> {
 }
 export function picture(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Picture >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Picture >> VNodeFlags.UniqueIdOffset),
     "<picture",
     null,
     className === undefined ? null : className,
@@ -981,7 +971,7 @@ export function picture(className?: string): VNode<{} | null> {
 }
 export function plaintext(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Plaintext >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Plaintext >> VNodeFlags.UniqueIdOffset),
     "<plaintext",
     null,
     className === undefined ? null : className,
@@ -991,7 +981,7 @@ export function plaintext(className?: string): VNode<{} | null> {
 }
 export function pre(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.NewLineEatingElement | (TagId.Pre >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.NewLineEatingElement | (TagId.Pre >> VNodeFlags.UniqueIdOffset),
     "<pre",
     null,
     className === undefined ? null : className,
@@ -1001,7 +991,7 @@ export function pre(className?: string): VNode<{} | null> {
 }
 export function progress(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Progress >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Progress >> VNodeFlags.UniqueIdOffset),
     "<progress",
     null,
     className === undefined ? null : className,
@@ -1011,7 +1001,7 @@ export function progress(className?: string): VNode<{} | null> {
 }
 export function q(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Q >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Q >> VNodeFlags.UniqueIdOffset),
     "<q",
     null,
     className === undefined ? null : className,
@@ -1021,7 +1011,7 @@ export function q(className?: string): VNode<{} | null> {
 }
 export function rt(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Rt >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Rt >> VNodeFlags.UniqueIdOffset),
     "<rt",
     null,
     className === undefined ? null : className,
@@ -1031,7 +1021,7 @@ export function rt(className?: string): VNode<{} | null> {
 }
 export function ruby(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Ruby >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Ruby >> VNodeFlags.UniqueIdOffset),
     "<ruby",
     null,
     className === undefined ? null : className,
@@ -1041,7 +1031,7 @@ export function ruby(className?: string): VNode<{} | null> {
 }
 export function s(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.S >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.S >> VNodeFlags.UniqueIdOffset),
     "<s",
     null,
     className === undefined ? null : className,
@@ -1051,7 +1041,7 @@ export function s(className?: string): VNode<{} | null> {
 }
 export function samp(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Samp >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Samp >> VNodeFlags.UniqueIdOffset),
     "<samp",
     null,
     className === undefined ? null : className,
@@ -1061,7 +1051,7 @@ export function samp(className?: string): VNode<{} | null> {
 }
 export function script(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Script >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Script >> VNodeFlags.UniqueIdOffset),
     "<script",
     null,
     className === undefined ? null : className,
@@ -1071,7 +1061,7 @@ export function script(className?: string): VNode<{} | null> {
 }
 export function section(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Section >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Section >> VNodeFlags.UniqueIdOffset),
     "<section",
     null,
     className === undefined ? null : className,
@@ -1081,7 +1071,7 @@ export function section(className?: string): VNode<{} | null> {
 }
 export function select(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Select >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Select >> VNodeFlags.UniqueIdOffset),
     "<select",
     null,
     className === undefined ? null : className,
@@ -1091,7 +1081,7 @@ export function select(className?: string): VNode<{} | null> {
 }
 export function small(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Small >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Small >> VNodeFlags.UniqueIdOffset),
     "<small",
     null,
     className === undefined ? null : className,
@@ -1101,7 +1091,7 @@ export function small(className?: string): VNode<{} | null> {
 }
 export function source(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Source >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Source >> VNodeFlags.UniqueIdOffset),
     "<source",
     null,
     className === undefined ? null : className,
@@ -1111,7 +1101,7 @@ export function source(className?: string): VNode<{} | null> {
 }
 export function span(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Span >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Span >> VNodeFlags.UniqueIdOffset),
     "<span",
     null,
     className === undefined ? null : className,
@@ -1121,7 +1111,7 @@ export function span(className?: string): VNode<{} | null> {
 }
 export function strike(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Strike >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Strike >> VNodeFlags.UniqueIdOffset),
     "<strike",
     null,
     className === undefined ? null : className,
@@ -1131,7 +1121,7 @@ export function strike(className?: string): VNode<{} | null> {
 }
 export function strong(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Strong >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Strong >> VNodeFlags.UniqueIdOffset),
     "<strong",
     null,
     className === undefined ? null : className,
@@ -1141,7 +1131,7 @@ export function strong(className?: string): VNode<{} | null> {
 }
 export function style(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Style >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Style >> VNodeFlags.UniqueIdOffset),
     "<style",
     null,
     className === undefined ? null : className,
@@ -1151,7 +1141,7 @@ export function style(className?: string): VNode<{} | null> {
 }
 export function sub(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Sub >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Sub >> VNodeFlags.UniqueIdOffset),
     "<sub",
     null,
     className === undefined ? null : className,
@@ -1161,7 +1151,7 @@ export function sub(className?: string): VNode<{} | null> {
 }
 export function sup(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Sup >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Sup >> VNodeFlags.UniqueIdOffset),
     "<sup",
     null,
     className === undefined ? null : className,
@@ -1171,7 +1161,7 @@ export function sup(className?: string): VNode<{} | null> {
 }
 export function table(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Table >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Table >> VNodeFlags.UniqueIdOffset),
     "<table",
     null,
     className === undefined ? null : className,
@@ -1181,7 +1171,7 @@ export function table(className?: string): VNode<{} | null> {
 }
 export function tbody(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Tbody >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Tbody >> VNodeFlags.UniqueIdOffset),
     "<tbody",
     null,
     className === undefined ? null : className,
@@ -1191,7 +1181,7 @@ export function tbody(className?: string): VNode<{} | null> {
 }
 export function td(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Td >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Td >> VNodeFlags.UniqueIdOffset),
     "<td",
     null,
     className === undefined ? null : className,
@@ -1201,7 +1191,7 @@ export function td(className?: string): VNode<{} | null> {
 }
 export function template(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Template >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Template >> VNodeFlags.UniqueIdOffset),
     "<template",
     null,
     className === undefined ? null : className,
@@ -1211,7 +1201,7 @@ export function template(className?: string): VNode<{} | null> {
 }
 export function tfoot(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Tfoot >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Tfoot >> VNodeFlags.UniqueIdOffset),
     "<tfoot",
     null,
     className === undefined ? null : className,
@@ -1221,7 +1211,7 @@ export function tfoot(className?: string): VNode<{} | null> {
 }
 export function th(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Th >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Th >> VNodeFlags.UniqueIdOffset),
     "<th",
     null,
     className === undefined ? null : className,
@@ -1231,7 +1221,7 @@ export function th(className?: string): VNode<{} | null> {
 }
 export function thead(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Thead >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Thead >> VNodeFlags.UniqueIdOffset),
     "<thead",
     null,
     className === undefined ? null : className,
@@ -1241,7 +1231,7 @@ export function thead(className?: string): VNode<{} | null> {
 }
 export function time(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Time >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Time >> VNodeFlags.UniqueIdOffset),
     "<time",
     null,
     className === undefined ? null : className,
@@ -1251,7 +1241,7 @@ export function time(className?: string): VNode<{} | null> {
 }
 export function title(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Title >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Title >> VNodeFlags.UniqueIdOffset),
     "<title",
     null,
     className === undefined ? null : className,
@@ -1261,7 +1251,7 @@ export function title(className?: string): VNode<{} | null> {
 }
 export function tr(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Tr >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Tr >> VNodeFlags.UniqueIdOffset),
     "<tr",
     null,
     className === undefined ? null : className,
@@ -1271,7 +1261,7 @@ export function tr(className?: string): VNode<{} | null> {
 }
 export function track(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Track >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Track >> VNodeFlags.UniqueIdOffset),
     "<track",
     null,
     className === undefined ? null : className,
@@ -1281,7 +1271,7 @@ export function track(className?: string): VNode<{} | null> {
 }
 export function tt(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Tt >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Tt >> VNodeFlags.UniqueIdOffset),
     "<tt",
     null,
     className === undefined ? null : className,
@@ -1291,7 +1281,7 @@ export function tt(className?: string): VNode<{} | null> {
 }
 export function u(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.U >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.U >> VNodeFlags.UniqueIdOffset),
     "<u",
     null,
     className === undefined ? null : className,
@@ -1301,7 +1291,7 @@ export function u(className?: string): VNode<{} | null> {
 }
 export function ul(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Ul >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Ul >> VNodeFlags.UniqueIdOffset),
     "<ul",
     null,
     className === undefined ? null : className,
@@ -1311,7 +1301,7 @@ export function ul(className?: string): VNode<{} | null> {
 }
 export function wbr(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Wbr >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Wbr >> VNodeFlags.UniqueIdOffset),
     "<wbr",
     null,
     className === undefined ? null : className,
@@ -1321,7 +1311,7 @@ export function wbr(className?: string): VNode<{} | null> {
 }
 export function xmp(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | (TagId.Xmp >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Xmp >> VNodeFlags.UniqueIdOffset),
     "<xmp",
     null,
     className === undefined ? null : className,
@@ -1334,7 +1324,7 @@ export function xmp(className?: string): VNode<{} | null> {
 // Textarea / Input Elements:
 export function textarea(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.TextAreaElement | VNodeFlags.NewLineEatingElement | (TagId.Textarea >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.NewLineEatingElement | (TagId.Textarea >> VNodeFlags.UniqueIdOffset),
     "<textarea",
     null,
     className === undefined ? null : className,
@@ -1344,7 +1334,7 @@ export function textarea(className?: string): VNode<{} | null> {
 }
 export function input(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.Input >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.Input >> VNodeFlags.UniqueIdOffset),
     `<input`,
     null,
     className === undefined ? null : className,
@@ -1354,7 +1344,7 @@ export function input(className?: string): VNode<{} | null> {
 }
 export function inputButton(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputButton >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputButton >> VNodeFlags.UniqueIdOffset),
     `<input type="button"`,
     null,
     className === undefined ? null : className,
@@ -1364,7 +1354,7 @@ export function inputButton(className?: string): VNode<{} | null> {
 }
 export function inputCheckbox(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputCheckbox >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputCheckbox >> VNodeFlags.UniqueIdOffset),
     `<input type="checkbox"`,
     null,
     className === undefined ? null : className,
@@ -1374,7 +1364,7 @@ export function inputCheckbox(className?: string): VNode<{} | null> {
 }
 export function inputColor(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputColor >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputColor >> VNodeFlags.UniqueIdOffset),
     `<input type="color"`,
     null,
     className === undefined ? null : className,
@@ -1384,7 +1374,7 @@ export function inputColor(className?: string): VNode<{} | null> {
 }
 export function inputDate(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputDate >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputDate >> VNodeFlags.UniqueIdOffset),
     `<input type="date"`,
     null,
     className === undefined ? null : className,
@@ -1394,7 +1384,7 @@ export function inputDate(className?: string): VNode<{} | null> {
 }
 export function inputDatetime(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputDatetime >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputDatetime >> VNodeFlags.UniqueIdOffset),
     `<input type="datetime"`,
     null,
     className === undefined ? null : className,
@@ -1404,7 +1394,7 @@ export function inputDatetime(className?: string): VNode<{} | null> {
 }
 export function inputDatetimeLocal(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputDatetimeLocal >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputDatetimeLocal >> VNodeFlags.UniqueIdOffset),
     `<input type="datetime-local"`,
     null,
     className === undefined ? null : className,
@@ -1414,7 +1404,7 @@ export function inputDatetimeLocal(className?: string): VNode<{} | null> {
 }
 export function inputEmail(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputEmail >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputEmail >> VNodeFlags.UniqueIdOffset),
     `<input type="email"`,
     null,
     className === undefined ? null : className,
@@ -1424,7 +1414,7 @@ export function inputEmail(className?: string): VNode<{} | null> {
 }
 export function inputFile(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputFile >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputFile >> VNodeFlags.UniqueIdOffset),
     `<input type="file"`,
     null,
     className === undefined ? null : className,
@@ -1434,7 +1424,7 @@ export function inputFile(className?: string): VNode<{} | null> {
 }
 export function inputHidden(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputHidden >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputHidden >> VNodeFlags.UniqueIdOffset),
     `<input type="hidden"`,
     null,
     className === undefined ? null : className,
@@ -1444,7 +1434,7 @@ export function inputHidden(className?: string): VNode<{} | null> {
 }
 export function inputImage(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputImage >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputImage >> VNodeFlags.UniqueIdOffset),
     `<input type="image"`,
     null,
     className === undefined ? null : className,
@@ -1454,7 +1444,7 @@ export function inputImage(className?: string): VNode<{} | null> {
 }
 export function inputMonth(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputMonth >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputMonth >> VNodeFlags.UniqueIdOffset),
     `<input type="month"`,
     null,
     className === undefined ? null : className,
@@ -1464,7 +1454,7 @@ export function inputMonth(className?: string): VNode<{} | null> {
 }
 export function inputNumber(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputNumber >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputNumber >> VNodeFlags.UniqueIdOffset),
     `<input type="number"`,
     null,
     className === undefined ? null : className,
@@ -1474,7 +1464,7 @@ export function inputNumber(className?: string): VNode<{} | null> {
 }
 export function inputPassword(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputPassword >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputPassword >> VNodeFlags.UniqueIdOffset),
     `<input type="password"`,
     null,
     className === undefined ? null : className,
@@ -1484,7 +1474,7 @@ export function inputPassword(className?: string): VNode<{} | null> {
 }
 export function inputRadio(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputRadio >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputRadio >> VNodeFlags.UniqueIdOffset),
     `<input type="radio"`,
     null,
     className === undefined ? null : className,
@@ -1494,7 +1484,7 @@ export function inputRadio(className?: string): VNode<{} | null> {
 }
 export function inputRange(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputRange >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputRange >> VNodeFlags.UniqueIdOffset),
     `<input type="range"`,
     null,
     className === undefined ? null : className,
@@ -1504,7 +1494,7 @@ export function inputRange(className?: string): VNode<{} | null> {
 }
 export function inputReset(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputReset >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputReset >> VNodeFlags.UniqueIdOffset),
     `<input type="reset"`,
     null,
     className === undefined ? null : className,
@@ -1514,7 +1504,7 @@ export function inputReset(className?: string): VNode<{} | null> {
 }
 export function inputSearch(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputSearch >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputSearch >> VNodeFlags.UniqueIdOffset),
     `<input type="search"`,
     null,
     className === undefined ? null : className,
@@ -1524,7 +1514,7 @@ export function inputSearch(className?: string): VNode<{} | null> {
 }
 export function inputSubmit(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputSubmit >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputSubmit >> VNodeFlags.UniqueIdOffset),
     `<input type="submit"`,
     null,
     className === undefined ? null : className,
@@ -1534,7 +1524,7 @@ export function inputSubmit(className?: string): VNode<{} | null> {
 }
 export function inputTel(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputTel >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputTel >> VNodeFlags.UniqueIdOffset),
     `<input type="tel"`,
     null,
     className === undefined ? null : className,
@@ -1544,7 +1534,7 @@ export function inputTel(className?: string): VNode<{} | null> {
 }
 export function inputTime(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputTime >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputTime >> VNodeFlags.UniqueIdOffset),
     `<input type="time"`,
     null,
     className === undefined ? null : className,
@@ -1554,7 +1544,7 @@ export function inputTime(className?: string): VNode<{} | null> {
 }
 export function inputUrl(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputUrl >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputUrl >> VNodeFlags.UniqueIdOffset),
     `<input type="url"`,
     null,
     className === undefined ? null : className,
@@ -1564,7 +1554,7 @@ export function inputUrl(className?: string): VNode<{} | null> {
 }
 export function inputWeek(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.InputElement | VNodeFlags.VoidElement | (TagId.InputWeek >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | VNodeFlags.VoidElement | (TagId.InputWeek >> VNodeFlags.UniqueIdOffset),
     `<input type="week"`,
     null,
     className === undefined ? null : className,
@@ -1577,7 +1567,7 @@ export function inputWeek(className?: string): VNode<{} | null> {
 // Media Elements:
 export function audio(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.MediaElement | (TagId.Audio >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Audio >> VNodeFlags.UniqueIdOffset),
     "<audio",
     null,
     className === undefined ? null : className,
@@ -1588,7 +1578,7 @@ export function audio(className?: string): VNode<{} | null> {
 
 export function video(className?: string): VNode<{} | null> {
   return new VNode(
-    VNodeFlags.Element | VNodeFlags.MediaElement | (TagId.Video >> VNodeFlags.ElementIdOffset),
+    VNodeFlags.Element | (TagId.Video >> VNodeFlags.UniqueIdOffset),
     "<video",
     null,
     className === undefined ? null : className,

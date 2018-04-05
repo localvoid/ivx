@@ -15,11 +15,7 @@ const STC = component((props: TestComponentOptions): VNode<any> => {
   return h.div();
 });
 
-describe("renderToString", () => {
-  test("'abc'", () => {
-    expect(render(h.t("abc"))).toBe("abc");
-  });
-
+describe("render", () => {
   test("<div>", () => {
     expect(render(h.div())).toBe("<div></div>");
   });
@@ -114,7 +110,7 @@ describe("renderToString", () => {
   });
 
   test("<div><span>, <strong></div>", () => {
-    expect(render(h.div().c(h.span(), h.strong())))
+    expect(render(h.div().c([h.span(), h.strong()])))
       .toBe(`<div><span></span><strong></strong></div>`);
   });
 
@@ -124,55 +120,37 @@ describe("renderToString", () => {
     "  <div><div></div>," +
     "  <div>" +
     "</div>", () => {
-      expect(render(h.div().c(
+      expect(render(h.div().c([
         h.div().c("hello"),
-        h.div().c(h.span().c("world"), h.div().c(h.span())),
+        h.div().c([h.span().c("world"), h.div().c(h.span())]),
         h.div().c(h.div()),
         h.div(),
-      ))).toBe(`<div><div>hello</div><div><span>world</span><div><span></span></div></div><div><div></div>` +
+      ]))).toBe(`<div><div>hello</div><div><span>world</span><div><span></span></div></div><div><div></div>` +
         `</div><div></div></div>`);
     });
 
-  describe("svg", () => {
-    test("<circle>", () => {
-      expect(render(h.circle())).toBe(`<circle></circle>`);
-    });
-
-    test("<circle style={top: 10px}>", () => {
-      expect(render(h.circle().s({ "top": "10px" }))).toBe(`<circle style="top:10px"></circle>`);
-    });
-
-    test("<circle xlink:href='a'>", () => {
-      expect(render(h.circle().a({ "xlink:href": "a" }))).toBe(`<circle xlink:href="a"></circle>`);
-    });
-
-    test("<circle xml:text='a'>", () => {
-      expect(render(h.circle().a({ "xml:text": "a" }))).toBe(`<circle xml:text="a"></circle>`);
-    });
-  });
-
   describe("children normalization", () => {
     test("<div><span>, [<strong>, <a>], <span></div>", () => {
-      expect(render(h.div().c(h.span(), [h.strong().k(0), h.div().k(1)], h.span())))
+      expect(render(h.div().c([h.span(), [h.strong(), h.div()], h.span()])))
         .toBe(`<div><span></span><strong></strong><div></div><span></span></div>`);
     });
 
     test("<div>'abc', []</div>", () => {
-      expect(render(h.div().c("abc", []))).toBe(`<div>abc</div>`);
+      expect(render(h.div().c(["abc", []]))).toBe(`<div>abc</div>`);
     });
 
     test("<div><div>, null, <span></div>", () => {
-      expect(render(h.div().c(h.div(), null, h.span())))
+      expect(render(h.div().c([h.div(), null, h.span()])))
         .toBe(`<div><div></div><span></span></div>`);
     });
 
     test("<div><div>, 'abc', <span></div>", () => {
-      expect(render(h.div().c(h.div(), "abc", h.span())))
+      expect(render(h.div().c([h.div(), "abc", h.span()])))
         .toBe(`<div><div></div>abc<span></span></div>`);
     });
 
     test("<div><div>, 123, <span></div>", () => {
-      expect(render(h.div().c(h.div(), 123, h.span())))
+      expect(render(h.div().c([h.div(), 123, h.span()])))
         .toBe(`<div><div></div>123<span></span></div>`);
     });
   });
@@ -214,14 +192,6 @@ describe("renderToString", () => {
 
     test("single-child text", () => {
       expect(render(h.div().c(`<&`))).toBe(`<div>&lt;&amp;</div>`);
-    });
-
-    test("text node content", () => {
-      expect(render(h.t(`<&`))).toBe(`&lt;&amp;`);
-    });
-
-    test("unsafeHTML", () => {
-      expect(render(h.div().unsafeHTML(`<&`))).toBe(`<div><&</div>`);
     });
   });
 
@@ -337,31 +307,21 @@ describe("renderToString", () => {
         });
 
         test("adjacent text nodes", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-            "def",
-          ), bp)).toBe(`<div>abcdef</div>`);
+          expect(renderWithBlueprint(h.div().c(["abc", "def"]), bp)).toBe(`<div>abcdef</div>`);
         });
 
         test("element", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-          ), bp)).toBe(`<div><span></span></div>`);
+          expect(renderWithBlueprint(h.div().c(h.span()), bp)).toBe(`<div><span></span></div>`);
         });
 
         test("elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            h.strong(),
-          ), bp)).toBe(`<div><span></span><strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), h.strong()]), bp))
+            .toBe(`<div><span></span><strong></strong></div>`);
         });
 
         test("mixed elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            "a",
-            h.strong(),
-          ), bp)).toBe(`<div><span></span>a<strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), "a", h.strong()]), bp))
+            .toBe(`<div><span></span>a<strong></strong></div>`);
         });
       });
 
@@ -376,174 +336,82 @@ describe("renderToString", () => {
         });
 
         test("adjacent text nodes", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-            "def",
-          ), bp)).toBe(`<div>abcdef</div>`);
+          expect(renderWithBlueprint(h.div().c(["abc", "def"]), bp)).toBe(`<div>abcdef</div>`);
         });
 
         test("element", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-          ), bp)).toBe(`<div><span></span></div>`);
+          expect(renderWithBlueprint(h.div().c(h.span()), bp)).toBe(`<div><span></span></div>`);
         });
 
         test("elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            h.strong(),
-          ), bp)).toBe(`<div><span></span><strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), h.strong()]), bp))
+            .toBe(`<div><span></span><strong></strong></div>`);
         });
 
         test("mixed elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            "a",
-            h.strong(),
-          ), bp)).toBe(`<div><span></span>a<strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), "a", h.strong()]), bp))
+            .toBe(`<div><span></span>a<strong></strong></div>`);
         });
       });
 
       describe("blueprint with children element", () => {
         const bp = createBlueprint(h.div().c(h.span()));
         test("basic text", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-          ), bp)).toBe(`<div>abc</div>`);
+          expect(renderWithBlueprint(h.div().c("abc"), bp)).toBe(`<div>abc</div>`);
         });
 
         test("basic number", () => {
-          expect(renderWithBlueprint(h.div().c(
-            123,
-          ), bp)).toBe(`<div>123</div>`);
+          expect(renderWithBlueprint(h.div().c(123), bp)).toBe(`<div>123</div>`);
         });
 
         test("adjacent text nodes", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-            "def",
-          ), bp)).toBe(`<div>abcdef</div>`);
+          expect(renderWithBlueprint(h.div().c(["abc", "def"]), bp)).toBe(`<div>abcdef</div>`);
         });
 
         test("element", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-          ), bp)).toBe(`<div><span></span></div>`);
+          expect(renderWithBlueprint(h.div().c(h.span()), bp)).toBe(`<div><span></span></div>`);
         });
 
         test("elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            h.strong(),
-          ), bp)).toBe(`<div><span></span><strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), h.strong()]), bp))
+            .toBe(`<div><span></span><strong></strong></div>`);
         });
 
         test("mixed elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            "a",
-            h.strong(),
-          ), bp)).toBe(`<div><span></span>a<strong></strong></div>`);
-        });
-
-        test("unsafeHTML", () => {
-          expect(renderWithBlueprint(h.div().unsafeHTML("<&"), bp)).toBe(`<div><&</div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), "a", h.strong()]), bp))
+            .toBe(`<div><span></span>a<strong></strong></div>`);
         });
       });
 
       describe("blueprint with multiple children elements", () => {
-        const bp = createBlueprint(h.div().c(h.span(), h.strong()));
+        const bp = createBlueprint(h.div().c([h.span(), h.strong()]));
         test("basic text", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-          ), bp)).toBe(`<div>abc</div>`);
+          expect(renderWithBlueprint(h.div().c("abc"), bp)).toBe(`<div>abc</div>`);
         });
 
         test("basic number", () => {
-          expect(renderWithBlueprint(h.div().c(
-            123,
-          ), bp)).toBe(`<div>123</div>`);
+          expect(renderWithBlueprint(h.div().c(123), bp)).toBe(`<div>123</div>`);
         });
 
         test("adjacent text nodes", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-            "def",
-          ), bp)).toBe(`<div>abcdef</div>`);
+          expect(renderWithBlueprint(h.div().c(["abc", "def"]), bp)).toBe(`<div>abcdef</div>`);
         });
 
         test("element", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-          ), bp)).toBe(`<div><span></span></div>`);
+          expect(renderWithBlueprint(h.div().c(h.span()), bp)).toBe(`<div><span></span></div>`);
         });
 
         test("elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            h.strong(),
-          ), bp)).toBe(`<div><span></span><strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), h.strong()]), bp))
+            .toBe(`<div><span></span><strong></strong></div>`);
         });
 
         test("mixed elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            "a",
-            h.strong(),
-          ), bp)).toBe(`<div><span></span>a<strong></strong></div>`);
+          expect(renderWithBlueprint(h.div().c([h.span(), "a", h.strong()]), bp))
+            .toBe(`<div><span></span>a<strong></strong></div>`);
         });
       });
 
-      describe("blueprint with multiple keyed/non-keyed children elements", () => {
-        const bp = createBlueprint(h.div().c(h.span().k(0), "a", h.strong().k(1)));
-        test("basic text", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-          ), bp)).toBe(`<div>abc</div>`);
-        });
-
-        test("basic number", () => {
-          expect(renderWithBlueprint(h.div().c(
-            123,
-          ), bp)).toBe(`<div>123</div>`);
-        });
-
-        test("adjacent text nodes", () => {
-          expect(renderWithBlueprint(h.div().c(
-            "abc",
-            "def",
-          ), bp)).toBe(`<div>abcdef</div>`);
-        });
-
-        test("element", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-          ), bp)).toBe(`<div><span></span></div>`);
-        });
-
-        test("elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            h.strong(),
-          ), bp)).toBe(`<div><span></span><strong></strong></div>`);
-        });
-
-        test("mixed elements", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.span(),
-            "a",
-            h.strong(),
-          ), bp)).toBe(`<div><span></span>a<strong></strong></div>`);
-        });
-
-        test("reorder elements 1", () => {
-          expect(renderWithBlueprint(h.div().c(
-            h.strong().k(1),
-            "a",
-            h.span().k(0),
-          ), bp)).toBe(`<div><strong></strong>a<span></span></div>`);
-        });
-      });
     });
   });
 });

@@ -4,12 +4,6 @@ import * as h from "ivx-html";
 import * as s from "ivx-svg";
 
 const MetabarMessage = connect<{ title: string, saved: boolean }, any>(
-  (props) => {
-    return h.span("js-metabarMessage u-textColorDarker").c(
-      props.title,
-      props.saved ? h.span("u-textColorNormal u-marginLeft18").c("Saved") : null,
-    );
-  },
   (prev, props, context) => {
     const title = context.title;
     const saved = context.saved;
@@ -18,6 +12,10 @@ const MetabarMessage = connect<{ title: string, saved: boolean }, any>(
     }
     return { title, saved };
   },
+  (props) => h.span("js-metabarMessage u-textColorDarker").c([
+    props.title,
+    props.saved ? h.span("u-textColorNormal u-marginLeft18").c("Saved") : null,
+  ]),
 );
 
 const MetabarButton = component<string>((text) => {
@@ -56,25 +54,25 @@ const MetabarButtonSet = component(() => {
 const MetabarBlock = component(() => {
   return h.div(
     "metabar-block u-floatRight u-xs-absolute u-xs-textAlignRight u-xs-right0 u-xs-marginRight20 u-height65 u-xs-height56",
-  ).c(
+  ).c([
     MetabarButton("Share"),
     MetabarButton("Publish"),
     MetabarButtonSet(),
-  );
+  ]);
 });
 
 const Metabar = component(() => {
   return h.div("metabar-inner u-marginAuto u-maxWidth1000 u-paddingLeft20 u-paddingRight20 js-metabarMiddle")
     .c(
       h.div("metabar-block metabar-block--left u-floatLeft u-height65 u-xs-height56")
-        .c(
+        .c([
           h.a("siteNav-logo")
             .a({
               href: "https:/medium.com",
               "data-log-event": "home",
             }),
           h.span("svgIcon svgIcon--logoNew svgIcon--45px is-flushLeft")
-            .c(
+            .c([
               s.svg("svgIcon-use")
                 .a({
                   width: "45",
@@ -82,7 +80,7 @@ const Metabar = component(() => {
                   viewBox: "-17 18 45 45",
                   "data-multipart": "true",
                 })
-                .c(
+                .c([
                   s.path()
                     .a({
                       d: "M11.525 28.078c-.472-.225-.858.002-.858.506v20.044l8.616 4.113c.948.46 1.717.14 1.717-.7v-19.3a.22.22 0 0 0-.124-.19l-9.35-4.46v-.01z",
@@ -103,21 +101,16 @@ const Metabar = component(() => {
                     .a({
                       d: "M.333 52.033c0 .84-.643 1.22-1.43.844l-8.045-3.84c-.472-.224-.858-.82-.858-1.325V28.89c0-.672.515-.976 1.145-.675l9.133 4.36a.092.092 0 0 1 .055.084v19.37z",
                     }),
-              ),
+                ]),
               h.span("u-textScreenReader").c("Homepage"),
-          ),
+            ]),
           h.div("u-alignMiddle u-inlineBlock u-verticalAlignTop u-height65 u-xs-height56")
-            .c(
-              h.div("u-alignBlock").c(MetabarMessage(), MetabarBlock()),
-          ),
-      ),
+            .c(h.div("u-alignBlock").c([MetabarMessage(), MetabarBlock()])),
+        ]),
   );
 });
 
 const Post = connect<any, any>(
-  (props) => {
-    return h.div().c(props);
-  },
   (prev, props, context) => {
     const content = context.content;
     if (prev && prev === content) {
@@ -125,6 +118,7 @@ const Post = connect<any, any>(
     }
     return content;
   },
+  (props) => h.div().c(props),
 );
 
 const Main = component(() => {
@@ -153,11 +147,11 @@ export const MediumApp = component(() => {
               "data-used": "true",
               "data-action-scope": "_actionscop_2",
             })
-            .c(
+            .c([
               Metabar(),
               h.div("metabar metabar--spacer js-metabarSpacer u-height65 u-xs-height56"),
               Main(),
-          ),
+            ]),
       ),
   );
 });

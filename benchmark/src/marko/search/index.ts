@@ -1,8 +1,8 @@
-import { renderWithBlueprint, createBlueprint } from "ivx";
+import { createBlueprint, renderWithBlueprint } from "ivx";
 import { MarkoSearchApp } from "./ui";
 
 /* tslint:disable:no-var-requires */
-const Data = require("./data.json");
+const Data = require("../../../data/search.json");
 
 function performSearch(input: any): any {
   const pIndex = input.pageIndex || 0;

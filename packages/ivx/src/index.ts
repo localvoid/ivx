@@ -1,11 +1,15 @@
 export { DOCTYPE } from "./misc";
-export { Component, ComponentOptions, component } from "./component";
-export { ConnectDescriptor } from "./connect_descriptor";
 export {
-  VNodeFlags, VNode, Children, isTextVNode, isElementVNode, isComponentVNode, disableDirtyChecking,
+  VNodeFlags, VNode, VNodeChildren,
+  ElementOptions, element,
+  ComponentDescriptor, ComponentOptions, component,
+  context,
+  ConnectDescriptor, connect,
 } from "./vnode";
-export { context, connect } from "./vnode_factories";
-export { createBlueprint, componentWithBlueprint } from "./blueprint";
+export {
+  BlueprintNodeFlags, BlueprintNode, BlueprintChildren,
+  createBlueprint, componentWithBlueprint,
+} from "./blueprint";
 export { render, renderWithBlueprint } from "./render";
-export { serializeState } from "./serialize";
+export { escapeAttributeValue, escapeText, escapeJavascript } from "./escape";
 export { flattenString } from "./flatten";
