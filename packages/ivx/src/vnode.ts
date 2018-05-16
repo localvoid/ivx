@@ -176,34 +176,100 @@ export interface ComponentDescriptor<P = void> {
   shouldUpdate(prevProps: P, nextProps: P): boolean;
 }
 
-export interface ComponentOptions<P> {
-  shouldUpdate?(prevProps: P, nextProps: P): boolean;
-}
-
-function checkPropsIdentity(prevProps: any, nextProps: any): boolean {
-  return prevProps !== nextProps;
+/**
+ * Checks props with a strict equality operator.
+ *
+ * @param prev - Previous props.
+ * @param next - Next props.
+ * @returns `true` when props are strictly equal.
+ */
+function checkPropsIdentity<P>(prev: P, next: P): boolean {
+  return prev !== next;
 }
 
 let nextComponentId = 1;
 
-export function component(render: () => VNodeChildren, options?: ComponentOptions<null>): () => VNode<null>;
+/**
+ * Creates a virtual DOM node factory function that produces nodes for components.
+ *
+ * @example
+ *     const A = component<{ text: string }>(
+ *       (props) => div().c(props.text),
+ *     );
+ *
+ *     render(
+ *       A({ text: "Hello" }),
+ *     );
+ *     // => <div>Hello</div>
+ *
+ * @param render - Render function.
+ * @returns Factory function that produces component nodes.
+ */
+export function component(render: () => VNodeChildren): () => VNode<undefined>;
+/**
+ * Creates a virtual DOM node factory function that produces nodes for components.
+ *
+ * @example
+ *     const A = component<{ text: string }>(
+ *       (props) => div().c(props.text),
+ *     );
+ *
+ *     render(
+ *       A({ text: "Hello" }),
+ *     );
+ *     // => <div>Hello</div>
+ *
+ * @param render - Render function.
+ * @returns Factory function that produces component nodes.
+ */
 export function component<P>(
-  render: (props: P) => VNodeChildren,
-  options?: ComponentOptions<P>,
-): (props: P) => VNode<P>;
-export function component<P>(
-  render: (props?: P) => VNodeChildren,
-  options?: ComponentOptions<P>,
-): (props: P) => VNode<P> {
-  let shouldUpdate = checkPropsIdentity;
-  if (options !== void 0) {
-    if (options.shouldUpdate !== void 0) {
-      shouldUpdate = options.shouldUpdate;
-    }
-  }
-
+  render: undefined extends P ? (props?: P) => VNodeChildren : (props: P) => VNodeChildren,
+): undefined extends P ? (props?: P) => VNode<P> : (props: P) => VNode<P>;
+/**
+ * Creates a virtual DOM node factory function that produces nodes for components.
+ *
+ * @example
+ *     const A = component<{ text: string }>(
+ *       (props) => div().c(props.text),
+ *     );
+ *
+ *     render(
+ *       A({ text: "Hello" }),
+ *     );
+ *     // => <div>Hello</div>
+ *
+ * @param render - Render function.
+ * @returns Factory function that produces component nodes.
+ */
+export function component<P>(render: (props: P) => VNodeChildren): (props: P) => VNode<P> {
   const flags = VNodeFlags.Component | (nextComponentId++ << VNodeFlags.UniqueIdOffset);
-  const d = { render, shouldUpdate, blueprint: null };
+  const d = { render, shouldUpdate: checkPropsIdentity, blueprint: null };
+  return (props: P) => new VNode<P>(flags, d, props, null, null, null);
+}
+
+/**
+ * Creates a virtual DOM node factory function that produces nodes for components with custom `shouldUpdate` hook
+ * function to prevent unnecessary updates.
+ *
+ * @example
+ *     const A = withShouldUpdate<{ text: string }>(
+ *       (prev, next) => prev.text !== next.text,
+ *       component(
+ *         (props) => h.div().c(props.text),
+ *       ),
+ *     );
+ *
+ * @param shouldUpdate - Function that performs an early check that prevent unnecessary updates.
+ * @param factory - Component factory function.
+ * @returns Factory that produces component nodes with custom `shouldUpdate` hook.
+ */
+export function withShouldUpdate<P>(
+  shouldUpdate: (prev: P, next: P) => boolean,
+  c: (props: P) => VNode<P>,
+): (props: P) => VNode<P> {
+  const flags = VNodeFlags.Component | (nextComponentId++ << VNodeFlags.UniqueIdOffset);
+  const v = c(undefined as any)._tag as ComponentDescriptor<P>;
+  const d = { render: v.render, shouldUpdate, blueprint: null };
   return (props: P) => new VNode<P>(flags, d, props, null, null, null);
 }
 

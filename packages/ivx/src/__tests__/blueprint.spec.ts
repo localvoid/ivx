@@ -1,7 +1,7 @@
 import { BlueprintNode, createBlueprint, BlueprintNodeFlags, VNode, component, connect, context } from "ivx";
 import { div, span, strong } from "ivx-html";
 
-const SRC = component((child: VNode<any>) => child);
+const SRC = component<VNode<any>>((child) => child);
 
 /**
  * Child from context.
