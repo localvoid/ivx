@@ -1,6 +1,12 @@
-# [ivx](https://github.com/localvoid/ivx)
+# [ivx](https://github.com/localvoid/ivx) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/localvoid/ivx/blob/master/LICENSE) [![codecov](https://codecov.io/gh/localvoid/ivx/branch/master/graph/badge.svg)](https://codecov.io/gh/localvoid/ivx) [![CircleCI Status](https://circleci.com/gh/localvoid/ivx.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/localvoid/ivx) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/localvoid/ivx)
 
 ivx is an extremely fast functional HTML string renderer.
+
+|packages|NPM version                                                                                        |
+|--------|---------------------------------------------------------------------------------------------------|
+|ivx     |[![npm version](https://img.shields.io/npm/v/ivx.svg)](https://www.npmjs.com/package/ivx)          |
+|ivx-html|[![npm version](https://img.shields.io/npm/v/ivx-html.svg)](https://www.npmjs.com/package/ivx-html)|
+|ivx-svg |[![npm version](https://img.shields.io/npm/v/ivx-svg.svg)](https://www.npmjs.com/package/ivx-svg)  |
 
 ## Features
 

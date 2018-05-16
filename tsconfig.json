@@ -1,0 +1,30 @@
+{
+  "extends": "./tools/typescript/tsconfig.checks.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es2016",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "es2015",
+      "es2016"
+    ],
+    "types": [
+      "jest"
+    ],
+    "paths": {
+      "ivx": [
+        "packages/ivx/src"
+      ],
+      "ivx-html": [
+        "packages/ivx-html/src"
+      ],
+      "ivx-svg": [
+        "packages/ivx-svg/src"
+      ]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*.ts"
+  ]
+}
