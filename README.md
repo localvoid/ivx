@@ -1,35 +1,28 @@
-Component-oriented HTML string renderer.
+# [ivx](https://github.com/localvoid/ivx)
+
+ivx is an extremely fast functional HTML string renderer.
 
 ## Features
 
 - Immutable Virtual DOM Nodes
-- Contexts
+- Implicit data propagation with contexts
 - Connectors for sideways data loading
-- Diff/Patch Renderer
-- Basic XSS protection
+- Diff/Patch renderer
 
 ## Basic Example
 
 ```js
 import { render } from "ivx";
-import * as h from "ivx-html";
+import { div } from "ivx-html";
 
-function Message(text) {
-  return h.p().c(text);
-}
-
-function Main(text) {
-  return h.div("main").c(
-    Message(text),
-  );
-}
-
-render(Main("Hello World"));
-// => <div class="main"><p>Hello World</p></div>
+render(div("message").c("Hello World!"));
+// => <div class="message">Hello World</div>
 ```
 
 ## API
+
 ### Virtual DOM
+
 #### HTML/SVG Elements
 
 HTML and SVG elements are created with predefined factory functions.
@@ -39,8 +32,8 @@ HTML and SVG elements are created with predefined factory functions.
 
 ```ts
 interface VNode {
-  a(attrs: {} | null): this;
-  s(style: {} | null): this;
+  a(attrs: { [key: string]: any } | null): this;
+  s(style: { [key: string]: any } | null): this;
   c(children: VNodeChildren): this;
 }
 
@@ -63,6 +56,7 @@ Raw text is used to inject any text into the document without any escaping.
 ```ts
 function raw(text: string): VNode<null>;
 ```
+
 #### Custom Elements
 
 ```ts
@@ -152,9 +146,9 @@ Example:
 
 ```ts
 import { component, componentWithBlueprint } from "ivx";
-import * as h from "ivx-html";
+import { div } from "ivx-html";
 
-const Button = component((title: string) => h.div("Button").c(title));
+const Button = component((title: string) => div("Button").c(title));
 const PrerenderedButton = componentWithBlueprint(Button(""));
 
 render(PrerenderedButton("Go"));
