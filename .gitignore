@@ -1,7 +1,10 @@
 dist
 coverage
+.ignore
+.TODO
 
 node_modules
+.jest
 
 .DS_Store
 .idea
