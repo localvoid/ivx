@@ -6,7 +6,7 @@ const SRC = component<VNode<any>>((child) => child);
 /**
  * Child from context.
  */
-const CC = connect<{ child: VNode<any> }, { child: VNode<any> }>(
+const CC = connect<{ child: VNode<any> }, undefined, { child: VNode<any> }>(
   (prev, props, ctx) => {
     const child = ctx.child;
     if (prev && prev.child === child) {

@@ -291,29 +291,104 @@ export function context<T = {}>(ctx: T, children: VNodeChildren): VNode<T> {
   );
 }
 
-export interface ConnectDescriptor<T, P, C extends {}> {
+/**
+ * Descriptor for connector objects.
+ */
+export interface ConnectDescriptor<T, P, C> {
   select: (prev: T | null, props: P, context: C) => T;
   render: (props: T) => VNodeChildren;
 }
 
 let nextConnectId = 1;
 
-export function connect<T, C extends {}>(
-  select: (prev: T | null, props: undefined, context: C) => T,
+/**
+ * Creates a virtual DOM node factory function that produces connector nodes.
+ *
+ * @example
+ *     const Connector = connect<string, undefined, { result: string }>(
+ *       (prev, props, context) => {
+ *         const result = context.result;
+ *
+ *         return (prev !== null && prev === result) ? prev :
+ *           result;
+ *       },
+ *       (text) => div().c(text),
+ *     );
+ *
+ * @param select - Selector function.
+ * @param render - Render function.
+ * @returns Factory function that produces connector nodes.
+ */
+export function connect<T>(
+  select: (prev: T | null) => T,
   render: (props: T) => VNodeChildren,
-): () => VNode<null>;
-export function connect<T, P, C extends {}>(
+): () => VNode<undefined>;
+
+/**
+ * Creates a virtual DOM node factory function that produces connector nodes.
+ *
+ * @example
+ *     const Connector = connect<string, undefined, { result: string }>(
+ *       (prev, props, context) => {
+ *         const result = context.result;
+ *
+ *         return (prev !== null && prev === result) ? prev :
+ *           result;
+ *       },
+ *       (text) => div().c(text),
+ *     );
+ *
+ * @param select - Selector function.
+ * @param render - Render function.
+ * @returns Factory function that produces connector nodes.
+ */
+export function connect<T, P>(
+  select: undefined extends P ? (prev: T | null, props?: P) => T : (prev: T | null, props: P) => T,
+  render: (props: T) => VNodeChildren,
+): undefined extends P ? () => VNode<P> : (props: P) => VNode<P>;
+
+/**
+ * Creates a virtual DOM node factory function that produces connector nodes.
+ *
+ * @example
+ *     const Connector = connect<string, undefined, { result: string }>(
+ *       (prev, props, context) => {
+ *         const result = context.result;
+ *
+ *         return (prev !== null && prev === result) ? prev :
+ *           result;
+ *       },
+ *       (text) => div().c(text),
+ *     );
+ *
+ * @param select - Selector function.
+ * @param render - Render function.
+ * @returns Factory function that produces connector nodes.
+ */
+export function connect<T, P, C>(
   select: (prev: T | null, props: P, context: C) => T,
   render: (props: T) => VNodeChildren,
-): (props: P) => VNode<P>;
+): undefined extends P ? () => VNode<P> : (props: P) => VNode<P>;
+
 /**
- * connect creates a factory function for connector nodes.
+ * Creates a virtual DOM node factory function that produces connector nodes.
  *
- * @param select Data selector.
- * @param render Render function.
- * @returns factory function for connector nodes.
+ * @example
+ *     const Connector = connect<string, undefined, { result: string }>(
+ *       (prev, props, context) => {
+ *         const result = context.result;
+ *
+ *         return (prev !== null && prev === result) ? prev :
+ *           result;
+ *       },
+ *       (text) => div().c(text),
+ *     );
+ *
+ * @param select - Selector function.
+ * @param render - Render function.
+ * @returns Factory function that produces connector nodes.
  */
-export function connect<T, P, C extends {}>(
+export function connect<T, P, C>(
   select: (prev: T | null, props: P, context: C) => T,
   render: (props: T) => VNodeChildren,
 ): (props: P) => VNode<P> {
