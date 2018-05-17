@@ -1,5 +1,5 @@
 import { connect } from "ivx";
-import * as h from "ivx-html";
+import { li, h1, div, ul } from "ivx-html";
 
 const Color = connect<{ id: number, selected: boolean, hex: string, name: string }, number, any>(
   (prev, id, context) => {
@@ -16,7 +16,7 @@ const Color = connect<{ id: number, selected: boolean, hex: string, name: string
       name: c.name,
     };
   },
-  (props) => h.li(props.selected === true ? "color selected" : "color")
+  (props) => li(props.selected === true ? "color selected" : "color")
     .s({ "background-color": props.hex })
     .c(props.name),
 );
@@ -30,13 +30,13 @@ export const MarkoColorApp = connect<{ colors: any[], selectedColor: any }, any>
     }
     return { colors, selectedColor };
   },
-  ({ colors, selectedColor }) => h.div("colors").c([
-    h.h1().c("Choose your favorite color:"),
-    h.div("colors").c(
+  ({ colors, selectedColor }) => div("colors").c([
+    h1().c("Choose your favorite color:"),
+    div("colors").c(
       colors.length > 0 ?
-        h.ul().c(colors.map((_, i) => Color(i))) :
-        h.div().c("No colors!"),
+        ul().c(colors.map((_, i) => Color(i))) :
+        div().c("No colors!"),
     ),
-    h.div().c(["You chose:", h.div("chosen-color").c(selectedColor.name)]),
+    div().c(["You chose:", div("chosen-color").c(selectedColor.name)]),
   ]),
 );

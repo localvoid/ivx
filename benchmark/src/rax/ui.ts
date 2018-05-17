@@ -1,5 +1,5 @@
 import { component, connect } from "ivx";
-import * as h from "ivx-html";
+import { div, h2, a, img, p, span } from "ivx-html";
 
 const BannerStyles = {
   container: {
@@ -52,9 +52,9 @@ const ListStyles = {
   },
 };
 
-const BannerItem = component<string>((img) => {
-  return h.div().s(BannerStyles.item)
-    .c(h.img().s(BannerStyles.itemImg).a({ src: img }));
+const BannerItem = component<string>((imageSrc) => {
+  return div().s(BannerStyles.item)
+    .c(img().s(BannerStyles.itemImg).a({ src: imageSrc }));
 });
 
 const Banner = connect<any[], { bannerData: any[] }>(
@@ -66,20 +66,20 @@ const Banner = connect<any[], { bannerData: any[] }>(
     return bannerData;
   },
   (data) => {
-    return h.div().s(BannerStyles.container).c([
-      h.h2().c("ivi Banner: "),
-      h.div().s(BannerStyles.list)
+    return div().s(BannerStyles.container).c([
+      h2().c("ivi Banner: "),
+      div().s(BannerStyles.list)
         .c(data.map((item: any, idx: number) => BannerItem(item.img)))]);
   },
 );
 
 const ListItem = component<{ href: string, img: string, title: string, price: number }>(
   (item) => {
-    return h.a().s(ListStyles.item).a({ href: item.href }).c([
-      h.img().s(ListStyles.itemImg),
-      h.p().s(ListStyles.itemTitle).c(item.title),
-      h.p().s(ListStyles.itemPrice).c(
-        h.span().c(`price: ${item.price}`),
+    return a().s(ListStyles.item).a({ href: item.href }).c([
+      img().s(ListStyles.itemImg),
+      p().s(ListStyles.itemTitle).c(item.title),
+      p().s(ListStyles.itemPrice).c(
+        span().c(`price: ${item.price}`),
       ),
     ]);
   },
@@ -94,9 +94,9 @@ const List = connect<any[], { listData: any[] }>(
     return listData;
   },
   (data) => {
-    return h.div().s(ListStyles.container).c([
-      h.h2().c("iviList "),
-      h.div().s(ListStyles.list).c(
+    return div().s(ListStyles.container).c([
+      h2().c("iviList "),
+      div().s(ListStyles.list).c(
         data.map((item: any, idx: number) => ListItem(item)),
       ),
     ]);
@@ -104,6 +104,6 @@ const List = connect<any[], { listData: any[] }>(
 );
 
 export const raxApp = component(() => {
-  return h.div("app")
+  return div("app")
     .c([Banner(), List()]);
 });
