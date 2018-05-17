@@ -68,7 +68,7 @@ export const enum VNodeFlags {
  */
 export class VNode<P = any> {
   /**
-   * Flags, see `VNodeFlags` for details.
+   * Flags, see {@link VNodeFlags} for details.
    */
   _flags: VNodeFlags;
   /**
@@ -114,10 +114,10 @@ export class VNode<P = any> {
   }
 
   /**
-   * s assigns style for an Element node.
+   * Assigns style for an Element node.
    *
-   * @param style Style.
-   * @returns VNode
+   * @param style - Style
+   * @returns This node
    */
   s<U extends {}>(style: U | null): this {
     this._style = style;
@@ -125,10 +125,10 @@ export class VNode<P = any> {
   }
 
   /**
-   * a assigns DOM attributes for an Element node.
+   * Assigns DOM attributes for an Element node.
    *
-   * @param attrs DOM attributes.
-   * @returns VNode
+   * @param attrs - DOM attributes
+   * @returns This node
    */
   a(attrs: { [key: string]: any } | null): this {
     this._props = attrs as P;
@@ -136,11 +136,11 @@ export class VNode<P = any> {
   }
 
   /**
-   * c assigns children for an Element node.
+   * Assigns children for an Element node.
    *
    * @param children Children can be a simple string, single VNode or recursive list of VNodes with strings and null
    *   values.
-   * @returns VNode
+   * @returns This node
    */
   c(children: VNodeChildren): this {
     this._children = children;
@@ -152,10 +152,10 @@ export type VNodeChildren = VNodeChildrenArray | VNode<any> | string | number | 
 export interface VNodeChildrenArray extends Array<VNodeChildren> { }
 
 /**
- * raw creates a VNode with a raw text.
+ * Creates a {@link VNode} with a raw text.
  *
- * @param text raw text.
- * @returns raw text VNode.
+ * @param text - Raw text
+ * @returns {@link VNode} with a raw text
  */
 export function raw(text: string): VNode<null> {
   return new VNode<null>(
@@ -179,9 +179,9 @@ export interface ComponentDescriptor<P = void> {
 /**
  * Checks props with a strict equality operator.
  *
- * @param prev - Previous props.
- * @param next - Next props.
- * @returns `true` when props are strictly equal.
+ * @param prev - Previous props
+ * @param next - Next props
+ * @returns `true` when props are strictly equal
  */
 function checkPropsIdentity<P>(prev: P, next: P): boolean {
   return prev !== next;
@@ -202,8 +202,8 @@ let nextComponentId = 1;
  *     );
  *     // => <div>Hello</div>
  *
- * @param render - Render function.
- * @returns Factory function that produces component nodes.
+ * @param render - Render function
+ * @returns Factory function that produces component nodes
  */
 export function component(render: () => VNodeChildren): () => VNode<undefined>;
 /**
@@ -219,8 +219,8 @@ export function component(render: () => VNodeChildren): () => VNode<undefined>;
  *     );
  *     // => <div>Hello</div>
  *
- * @param render - Render function.
- * @returns Factory function that produces component nodes.
+ * @param render - Render function
+ * @returns Factory function that produces component nodes
  */
 export function component<P>(
   render: undefined extends P ? (props?: P) => VNodeChildren : (props: P) => VNodeChildren,
@@ -238,8 +238,8 @@ export function component<P>(
  *     );
  *     // => <div>Hello</div>
  *
- * @param render - Render function.
- * @returns Factory function that produces component nodes.
+ * @param render - Render function
+ * @returns Factory function that produces component nodes
  */
 export function component<P>(render: (props: P) => VNodeChildren): (props: P) => VNode<P> {
   const flags = VNodeFlags.Component | (nextComponentId++ << VNodeFlags.UniqueIdOffset);
@@ -259,9 +259,9 @@ export function component<P>(render: (props: P) => VNodeChildren): (props: P) =>
  *       ),
  *     );
  *
- * @param shouldUpdate - Function that performs an early check that prevent unnecessary updates.
- * @param factory - Component factory function.
- * @returns Factory that produces component nodes with custom `shouldUpdate` hook.
+ * @param shouldUpdate - Function that performs an early check that prevent unnecessary updates
+ * @param factory - Component factory function
+ * @returns Factory that produces component nodes with custom `shouldUpdate` hook
  */
 export function withShouldUpdate<P>(
   shouldUpdate: (prev: P, next: P) => boolean,
@@ -274,11 +274,11 @@ export function withShouldUpdate<P>(
 }
 
 /**
- * Create a context VNode.
+ * Creates a {@link VNode} with a context.
  *
- * @param ctx Context.
- * @param children Children.
- * @returns Context VNode.
+ * @param ctx - Context
+ * @param children - Children
+ * @returns {@link VNode} with a context
  */
 export function context<T = {}>(ctx: T, children: VNodeChildren): VNode<T> {
   return new VNode<T>(
@@ -315,9 +315,9 @@ let nextConnectId = 1;
  *       (text) => div().c(text),
  *     );
  *
- * @param select - Selector function.
- * @param render - Render function.
- * @returns Factory function that produces connector nodes.
+ * @param select - Selector function
+ * @param render - Render function
+ * @returns Factory function that produces connector nodes
  */
 export function connect<T>(
   select: (prev: T | null) => T,
@@ -338,9 +338,9 @@ export function connect<T>(
  *       (text) => div().c(text),
  *     );
  *
- * @param select - Selector function.
- * @param render - Render function.
- * @returns Factory function that produces connector nodes.
+ * @param select - Selector function
+ * @param render - Render function
+ * @returns Factory function that produces connector nodes
  */
 export function connect<T, P>(
   select: undefined extends P ? (prev: T | null, props?: P) => T : (prev: T | null, props: P) => T,
@@ -361,9 +361,9 @@ export function connect<T, P>(
  *       (text) => div().c(text),
  *     );
  *
- * @param select - Selector function.
- * @param render - Render function.
- * @returns Factory function that produces connector nodes.
+ * @param select - Selector function
+ * @param render - Render function
+ * @returns Factory function that produces connector nodes
  */
 export function connect<T, P, C>(
   select: (prev: T | null, props: P, context: C) => T,
@@ -384,9 +384,9 @@ export function connect<T, P, C>(
  *       (text) => div().c(text),
  *     );
  *
- * @param select - Selector function.
- * @param render - Render function.
- * @returns Factory function that produces connector nodes.
+ * @param select - Selector function
+ * @param render - Render function
+ * @returns Factory function that produces connector nodes
  */
 export function connect<T, P, C>(
   select: (prev: T | null, props: P, context: C) => T,

@@ -1,7 +1,8 @@
 /**
- * flattenString flattens cons string.
- * @param s string
- * @returns flattened string.
+ * Flattens cons string.
+ *
+ * @param s String
+ * @returns Flattened string
  */
 export function flattenString(s: string): string {
   Number(s);

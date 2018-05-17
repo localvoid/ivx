@@ -1,11 +1,11 @@
 /**
- * escapeText escapes HTML text.
+ * Escapes HTML text.
  *
- * https://www.w3.org/TR/html5/syntax.html#data-state
- * https://www.w3.org/TR/html5/syntax.html#rcdata-state
+ * {@link https://www.w3.org/TR/html5/syntax.html#data-state}
+ * {@link https://www.w3.org/TR/html5/syntax.html#rcdata-state}
  *
- * @param text Text.
- * @returns Escaped text.
+ * @param text - Text
+ * @returns Escaped text
  */
 export function escapeText(text: string | number): string {
   if (typeof text === "string") {
@@ -43,11 +43,11 @@ export function escapeText(text: string | number): string {
 }
 
 /**
- * escapeAttributeValue escapes HTML attribute values.
+ * Escapes HTML attribute values.
  *
- * https://www.w3.org/TR/html5/syntax.html#attribute-value-(double-quoted)-state
+ * {@link https://www.w3.org/TR/html5/syntax.html#attribute-value-(double-quoted)-state}
  *
- * @param text Attribute value.
+ * @param text - Attribute value
  * @returns Escaped attribute value
  */
 export function escapeAttributeValue(text: string | number): string {
@@ -86,9 +86,9 @@ export function escapeAttributeValue(text: string | number): string {
 }
 
 /**
- * escapeJavascript escapes javascript code.
+ * Escapes javascript code.
  *
- * @param text Text.
+ * @param text - Text.
  * @returns Escaped text.
  */
 export function escapeJavascript(text: string): string {

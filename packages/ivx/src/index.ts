@@ -1,7 +1,7 @@
 export {
   VNodeFlags, VNode, VNodeChildren,
   raw,
-  ComponentDescriptor, ComponentOptions, component,
+  ComponentDescriptor, component,
   context,
   ConnectDescriptor, connect,
 } from "./vnode";

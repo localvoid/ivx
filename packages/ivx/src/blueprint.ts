@@ -3,23 +3,38 @@ import { renderOpenElement } from "./render";
 import { escapeText } from "./escape";
 import { flattenString } from "./flatten";
 
+/**
+ * Blueprint node flags.
+ */
 export const enum BlueprintNodeFlags {
+  /**
+   * Blueprint node were instantiated from a `string`.
+   */
   String = 1,
+  /**
+   * Blueprint node were instantiated from a `number`.
+   */
   Number = 1 << 1,
+  /**
+   * Blueprint node were instantiated from a {@link VNode} object.
+   */
   VNode = 1 << 2,
+  /**
+   * Blueprint contains a {@link VNode} with a {@link VNodeFlags.Connect} flag.
+   */
   DeepConnect = 1 << 3,
 }
 
 /**
- * Blueprint Node.
+ * Blueprint node.
  */
 export class BlueprintNode {
   /**
-   * See `BlueprintNodeFlags` for details.
+   * Flags. See the {@link BlueprintNodeFlags} for details.
    */
   flags: BlueprintNodeFlags;
   /**
-   * Object that were used to create this node.
+   * Source object. Object that were used as a prototype for this node.
    */
   src: VNode<any> | string | number;
   /**
@@ -29,19 +44,21 @@ export class BlueprintNode {
   /**
    * Prerendered string.
    *
-   * String => Escaped String
-   * Number => Number.toString()
-   * VNode  =>
-   *   RawText => Flattened raw text.
-   *   Element => <Open Tag with attributes>
-   *   Component => Prerendered component
-   *   Connect   => Prerendered connector
+   * Depending on the source object, it may contain different prerendered strings:
+   *
+   * - strings will be converted to escaped strings
+   * - numbers will be converted to strings with `toString()` method
+   * - {@link VNode} with a {@link VNodeFlags.RawText} flag will be converted to a flattened string
+   * - {@link VNode} with a {@link VNodeFlags.Element} flag will be prerendered as an open tag with attributes
+   * - {@link VNode} with a {@link VNodeFlags.Component} flag will be fully prerendered
+   * - {@link VNode} with a {@link VNodeFlags.Connect} flag will be fully prerendered
    */
   string: string;
   /**
-   * Additional Data.
+   * Additional data.
    *
-   * Selector data for connectors.
+   * {@link VNode} with a {@link VNodeFlags.Connect} flag is using this property to store internal state produced by
+   * selector function.
    */
   data: {} | null;
 
@@ -60,7 +77,13 @@ export class BlueprintNode {
   }
 }
 
+/**
+ * Blueprint children.
+ */
 export type BlueprintChildren = BlueprintChildrenArray | BlueprintNode | null;
+/**
+ * Recursive bluprint children array.
+ */
 export interface BlueprintChildrenArray extends Array<BlueprintChildren> { }
 
 interface CreateResult {
@@ -118,10 +141,10 @@ function createBlueprintFromChildren(children: VNodeChildren, context: {}): Crea
 }
 
 /**
- * createBlueprintFromVNode creates a blueprint from Virtual DOM node.
+ * Creates a blueprint from a virtual DOM node.
  *
- * @param vnode Virtual DOM node.
- * @param context Current context.
+ * @param vnode - Virtual DOM node.
+ * @param context - Current context.
  * @returns Blueprint node.
  */
 function createBlueprintFromVNode(vnode: VNode<any>, context: {}): CreateResult {
@@ -196,16 +219,23 @@ function createBlueprintFromVNode(vnode: VNode<any>, context: {}): CreateResult 
 }
 
 /**
- * createBlueprint creates a blueprint that can be used to optimize rendering to string.
+ * Creates a blueprint that can be used to optimize rendering.
  *
- * @param node Virtual DOM node.
- * @param context Context.
- * @returns Blueprint.
+ * @param node - Virtual DOM node
+ * @param context - Context
+ * @returns {@link BlueprintNode}
  */
 export function createBlueprint(node: VNode<any>, context: {} = {}): BlueprintNode {
   return createBlueprintFromVNode(node, context).children as BlueprintNode;
 }
 
+/**
+ * Creates a factory function with a linked blueprint.
+ *
+ * @param node - Virtual DOM node
+ * @param context - Context
+ * @returns Factory function with a linked blueprint
+ */
 export function componentWithBlueprint(node: VNode<null>, context?: {}): () => VNode<null>;
 export function componentWithBlueprint<P>(node: VNode<P>, context?: {}): (props: P) => VNode<P>;
 export function componentWithBlueprint<P>(node: VNode<P>, context?: {}): (props: P) => VNode<P> {

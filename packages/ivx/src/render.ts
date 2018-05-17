@@ -3,10 +3,10 @@ import { BlueprintNodeFlags, BlueprintNode, BlueprintChildren } from "./blueprin
 import { escapeAttributeValue, escapeText } from "./escape";
 
 /**
- * renderElementAttrs renders element attributes to string.
+ * Renders element attributes to string.
  *
- * @param attrs Element attributes.
- * @returns Element attributes in string format.
+ * @param attrs - Element attributes
+ * @returns Element attributes in a string format
  */
 export function renderElementAttrs(attrs: { [key: string]: string }): string {
   let result = "";
@@ -28,10 +28,10 @@ export function renderElementAttrs(attrs: { [key: string]: string }): string {
 }
 
 /**
- * renderElementStyle renders element styles to string.
+ * Renders element styles to string.
  *
- * @param style Element styles.
- * @returns Element styles in string format.
+ * @param style - Element styles
+ * @returns Element styles in a string format
  */
 export function renderElementStyle(style: { [key: string]: any }): string {
   let result = ` style="`;
@@ -54,10 +54,10 @@ export function renderElementStyle(style: { [key: string]: any }): string {
 }
 
 /**
- * renderOpenElement renders open tag for an element.
+ * Renders open tag for an element.
  *
- * @param node Virtual DOM node.
- * @returns Open tag in a string format.
+ * @param node - Virtual DOM node
+ * @returns Open tag in a string format
  */
 export function renderOpenElement(node: VNode<any>): string {
   let result = node._tag as string;
@@ -97,11 +97,11 @@ function renderChildren(children: VNodeChildren, context: {}): string {
 }
 
 /**
- * renderVNode renders Virtual DOM node to string format.
+ * Renders virtual DOM node to a string format.
  *
- * @param node Virtual DOM node.
- * @param context Current context.
- * @returns Virtual DOM node in string format.
+ * @param node - Virtual DOM node
+ * @param context - Current context
+ * @returns Virtual DOM node in a string format
  */
 function renderVNode(node: VNode<any>, context: {}): string {
   const flags = node._flags;
@@ -222,12 +222,12 @@ function patchChildren(a: BlueprintChildren, b: VNodeChildren, context: {}): str
 }
 
 /**
- * patch performs a diff/patch on blueprint node.
+ * Performs a diff/patch on a {@link BlueprintNode}.
  *
- * @param a Blueprint node.
- * @param b Virtual DOM node.
- * @param context Current context.
- * @returns Patched string.
+ * @param a - {@link BlueprintNode}
+ * @param b - {@link VNode}
+ * @param context - Current context
+ * @returns Patched string
  */
 function patch(a: BlueprintNode, b: VNode<any> | string | number, context: {}): string {
   const bpFlags = a.flags;
@@ -295,31 +295,24 @@ function patch(a: BlueprintNode, b: VNode<any> | string | number, context: {}): 
 }
 
 /**
- * render renders Virtual DOM to string.
+ * Renders a {@link VNode} to string.
  *
- * @param node Virtual DOM.
- * @param context Current context.
- * @returns Virtual DOM in string format.
+ * @param node - {@link VNode}
+ * @param context - Current context
+ * @returns Rendering results
  */
-export function render(
-  node: VNode<any>,
-  context: {} = {},
-): string {
+export function render(node: VNode<any>, context: {} = {}): string {
   return renderVNode(node, context);
 }
 
 /**
- * renderWithBlueprint renders Virtual DOM to string by diffing with specified blueprint.
+ * Renders {@link VNode} to string by diffing with specified {@link BlueprintNode}.
  *
- * @param node Virtual DOM.
- * @param blueprint Perform diff/patch on blueprint.
- * @param context Current context.
- * @returns Virtual DOM in string format.
+ * @param node - {@link VNode}
+ * @param blueprint - {@link BlueprintNode}
+ * @param context - Current context.
+ * @returns Rendering results
  */
-export function renderWithBlueprint(
-  node: VNode<any>,
-  blueprint: BlueprintNode,
-  context: {} = {},
-): string {
+export function renderWithBlueprint(node: VNode<any>, blueprint: BlueprintNode, context: {} = {}): string {
   return patch(blueprint, node, context);
 }
