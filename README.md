@@ -78,33 +78,87 @@ function element<T>(tagName: string, options?: ElementOptions): (className?: str
 #### Components
 
 ```ts
-interface ComponentOptions<P> {
-  shouldUpdate?(prevProps: P, nextProps: P): boolean;
-}
-function component(render: () => VNodeChildren, options?: ComponentOptions<null>): () => VNode<null>;
-function component<P>(render: (props: P) => VNodeChildren, options?: ComponentOptions<P>): (props: P) => VNode<P>;
+function component(render: () => VNodeChildren): () => VNode<undefined>;
+function component<P>(
+  render: undefined extends P ? (props?: P) => VNodeChildren : (props: P) => VNodeChildren,
+): undefined extends P ? (props?: P) => VNode<P> : (props: P) => VNode<P>;
 ```
 
 `component()` function creates a factory function for components.
 
+```ts
+const A = component<{ text: string }>(
+  (props) => div().c(props.text),
+);
+
+render(
+  A({ text: "Hello" }),
+);
+// => <div>Hello</div>
+```
+
+##### Should Update hint
+
+```ts
+function withShouldUpdate<P>(
+  shouldUpdate: (prev: P, next: P) => boolean,
+  c: (props: P) => VNode<P>,
+): (props: P) => VNode<P>;
+```
+
+`withShouldUpdate()` function creates a factory function for components with should update hint.
+
+```ts
+const A = withShouldUpdate<{ text: string }>(
+  (prev, next) => prev.text !== next.text,
+  component(
+    (props) => h.div().c(props.text),
+  ),
+);
+```
+
 #### Context and Connectors
 
 ```ts
-function context<T = {}>(ctx: T, children: VNodeChildren): VNode<T>;
-function connect<T, C extends {}>(
-  select: (prev: T | null, props: undefined, context: C) => T,
+function context<T>(ctx: T, children: VNodeChildren): VNode<T>;
+
+function connect<T>(
+  select: (prev: T | null) => T,
   render: (props: T) => VNodeChildren,
-): () => VNode<null>;
-function connect<T, P, C extends {}>(
+): () => VNode<undefined>;
+function connect<T, P>(
+  select: undefined extends P ? (prev: T | null, props?: P) => T : (prev: T | null, props: P) => T,
+  render: (props: T) => VNodeChildren,
+): undefined extends P ? () => VNode<P> : (props: P) => VNode<P>;
+function connect<T, P, C>(
   select: (prev: T | null, props: P, context: C) => T,
   render: (props: T) => VNodeChildren,
-): (props: P) => VNode<P>;
+): undefined extends P ? () => VNode<P> : (props: P) => VNode<P>;
 ```
 
 Connector is a specialized `VNode` that have access to the current context. `connect()` function creates a factory
 function for connectors.
 
 `context()` function creates a `VNode` that will modify current context for its `children`.
+
+```ts
+const Connector = connect<string, undefined, { result: string }>(
+  (prev, props, context) => {
+    const result = context.result;
+
+    return (prev !== null && prev === result) ? prev :
+      result;
+  },
+  (text) => div().c(text),
+);
+
+render(
+  context({ result: "Hello World!" },
+    Connector(),
+  ),
+);
+// => <div>Hello World!</div>
+```
 
 ### Render to String
 
