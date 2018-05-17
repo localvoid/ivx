@@ -1,6 +1,6 @@
 {
   "name": "ivx-html",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
   "es2016": "dist/es2016/index.js",
@@ -21,10 +21,10 @@
     "dist:es2016": "../../node_modules/.bin/tsc -p ./tsconfig.build.es2016.json"
   },
   "peerDependencies": {
-    "ivx": "^0.2.0"
+    "ivx": "^0.3.0"
   },
   "devDependencies": {
-    "ivx": "^0.2.0"
+    "ivx": "^0.3.0"
   },
   "description": "ivx factories for HTML elements",
   "license": "MIT",
