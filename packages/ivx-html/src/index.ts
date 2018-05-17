@@ -304,7 +304,7 @@ export function br(className?: string): VNode<{} | null> {
 export function button(className?: string): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | (TagId.Button << VNodeFlags.UniqueIdOffset),
-    "<button type=\"button\"",
+    "<button",
     null,
     className === undefined ? null : className,
     null,
