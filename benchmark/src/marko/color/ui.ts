@@ -16,12 +16,11 @@ const Color = connect<{ id: number, selected: boolean, hex: string, name: string
       name: c.name,
     };
   },
-  (props) => li(props.selected === true ? "color selected" : "color")
-    .s({ "background-color": props.hex })
+  (props) => li(props.selected === true ? "color selected" : "color", void 0, { "background-color": props.hex })
     .c(props.name),
 );
 
-export const MarkoColorApp = connect<{ colors: any[], selectedColor: any }, any>(
+export const MarkoColorApp = connect<{ colors: any[], selectedColor: any }, undefined, any>(
   (prev, props, context) => {
     const colors = context.colors;
     const selectedColor = context.selectedColor;

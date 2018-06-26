@@ -38,42 +38,42 @@ describe("blueprint", () => {
     });
 
     test(`<div id="123">`, () => {
-      const bp = createBlueprint(div().a({ id: "123" }));
+      const bp = createBlueprint(div("", { id: "123" }));
       expect(bp.string).toBe(`<div id="123">`);
     });
 
     test(`<div id="123" title="qwe">`, () => {
-      const bp = createBlueprint(div().a({ id: "123", title: "qwe" }));
+      const bp = createBlueprint(div("", { id: "123", title: "qwe" }));
       expect(bp.string).toBe(`<div id="123" title="qwe">`);
     });
 
     test(`<div class="abc" id="123">`, () => {
-      const bp = createBlueprint(div("abc").a({ id: "123" }));
+      const bp = createBlueprint(div("abc", { id: "123" }));
       expect(bp.string).toBe(`<div class="abc" id="123">`);
     });
 
     test(`<div style="color:green">`, () => {
-      const bp = createBlueprint(div().s({ color: "green" }));
+      const bp = createBlueprint(div("", void 0, { color: "green" }));
       expect(bp.string).toBe(`<div style="color:green">`);
     });
 
     test(`<div style="color:green;font-size:1">`, () => {
-      const bp = createBlueprint(div().s({ color: "green", "font-size": 1 }));
+      const bp = createBlueprint(div("", void 0, { color: "green", "font-size": 1 }));
       expect(bp.string).toBe(`<div style="color:green;font-size:1">`);
     });
 
     test(`<div class="abc" style="color:green">`, () => {
-      const bp = createBlueprint(div("abc").s({ color: "green" }));
+      const bp = createBlueprint(div("abc", void 0, { color: "green" }));
       expect(bp.string).toBe(`<div class="abc" style="color:green">`);
     });
 
     test(`<div id="123" style="color:green">`, () => {
-      const bp = createBlueprint(div().a({ id: "123" }).s({ color: "green" }));
+      const bp = createBlueprint(div("", { id: "123" }, { color: "green" }));
       expect(bp.string).toBe(`<div id="123" style="color:green">`);
     });
 
     test(`<div class="abc" id="123" style="color:green">`, () => {
-      const bp = createBlueprint(div("abc").a({ id: "123" }).s({ color: "green" }));
+      const bp = createBlueprint(div("abc", { id: "123" }, { color: "green" }));
       expect(bp.string).toBe(`<div class="abc" id="123" style="color:green">`);
     });
 

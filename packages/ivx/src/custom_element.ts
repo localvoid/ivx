@@ -44,13 +44,14 @@ export function element<T>(tagName: string, options?: ElementOptions): (classNam
   openString = flattenString(openString);
   const closeString = voidElement ? "" : flattenString(`</${tagName}>`);
 
-  return function (className?: string) {
+  return (className?: string, attrs?: T, css?: {}) => {
     return new VNode<T>(
       flags,
       openString,
+      attrs,
+      className,
       null,
-      className === void 0 ? null : className,
-      null,
+      css,
       closeString,
     );
   };

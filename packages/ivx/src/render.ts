@@ -62,13 +62,14 @@ export function renderElementStyle(style: { [key: string]: any }): string {
 export function renderOpenElement(node: VNode<any>): string {
   let result = node._tag as string;
 
-  if (node._className !== null) {
-    result += ` class="${node._className}"`;
+  const cs = node._className;
+  if (cs !== void 0 && cs !== "") {
+    result += ` class="${cs}"`;
   }
-  if (node._props !== null) {
+  if (node._props !== void 0) {
     result += renderElementAttrs(node._props);
   }
-  if (node._style !== null) {
+  if (node._style !== void 0) {
     result += renderElementStyle(node._style);
   }
   result += ">";

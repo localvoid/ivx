@@ -2,1047 +2,1590 @@ import { VNode, VNodeFlags } from "ivx";
 
 const enum TagId {
   A = 1,
-  AltGlyph = 2,
-  AltGlyphDef = 3,
-  AltGlyphItem = 4,
-  Animate = 5,
-  AnimateColor = 6,
-  AnimateMotion = 7,
-  AnimateTransform = 8,
-  Circle = 9,
-  ClipPath = 10,
-  ColorProfile = 11,
-  Cursor = 12,
-  Defs = 13,
-  Desc = 14,
-  Discard = 15,
-  Ellipse = 16,
-  FeBlend = 17,
-  FeColorMatrix = 18,
-  FeComponentTransfer = 19,
-  FeComposite = 20,
-  FeConvolveMatrix = 21,
-  FeDiffuseLighting = 22,
-  FeDisplacementMap = 23,
-  FeDistantLight = 24,
-  FeDropShadow = 25,
-  FeFlood = 26,
-  FeFuncA = 27,
-  FeFuncB = 28,
-  FeFuncG = 29,
-  FeFuncR = 30,
-  FeGaussianBlur = 31,
-  FeImage = 32,
-  FeMerge = 33,
-  FeMergeNode = 34,
-  FeMorphology = 35,
-  FeOffset = 36,
-  FePointLight = 37,
-  FeSpecularLighting = 38,
-  FeSpotLight = 39,
-  FeTile = 40,
-  FeTurbulence = 41,
-  Filter = 42,
-  Font = 43,
-  FontFace = 44,
-  FontFaceFormat = 45,
-  FontFaceName = 46,
-  FontFaceSrc = 47,
-  FontFaceUri = 48,
-  ForeignObject = 49,
-  G = 50,
-  Glyph = 51,
-  GlyphRef = 52,
-  Hatch = 53,
-  Hatchpath = 54,
-  Hkern = 55,
-  Image = 56,
-  Line = 57,
-  LinearGradient = 58,
-  Marker = 59,
-  Mask = 60,
-  Mesh = 61,
-  Meshgradient = 62,
-  Meshpatch = 63,
-  Meshrow = 64,
-  Metadata = 65,
-  MissingGlyph = 66,
-  Mpath = 67,
-  Path = 68,
-  Pattern = 69,
-  Polygon = 70,
-  Polyline = 71,
-  RadialGradient = 72,
-  Rect = 73,
-  Set = 74,
-  Solidcolor = 75,
-  Stop = 76,
-  Svg = 77,
-  Switch = 78,
-  Symbol = 79,
-  Text = 80,
-  TextPath = 81,
-  Title = 82,
-  Tref = 83,
-  Tspan = 84,
-  Use = 85,
-  View = 86,
-  Vkern = 87,
+  Animate = 2,
+  AnimateColor = 3,
+  AnimateMotion = 4,
+  AnimateTransform = 5,
+  Circle = 6,
+  ClipPath = 7,
+  Defs = 8,
+  Desc = 9,
+  Discard = 10,
+  Ellipse = 11,
+  FeBlend = 12,
+  FeColorMatrix = 13,
+  FeComponentTransfer = 14,
+  FeComposite = 15,
+  FeConvolveMatrix = 16,
+  FeDiffuseLighting = 17,
+  FeDisplacementMap = 18,
+  FeDistantLight = 19,
+  FeDropShadow = 20,
+  FeFlood = 21,
+  FeFuncA = 22,
+  FeFuncB = 23,
+  FeFuncG = 24,
+  FeFuncR = 25,
+  FeGaussianBlur = 26,
+  FeImage = 27,
+  FeMerge = 28,
+  FeMergeNode = 29,
+  FeMorphology = 30,
+  FeOffset = 31,
+  FePointLight = 32,
+  FeSpecularLighting = 33,
+  FeSpotLight = 34,
+  FeTile = 35,
+  FeTurbulence = 36,
+  Filter = 37,
+  ForeignObject = 38,
+  G = 39,
+  Hatch = 40,
+  Hatchpath = 41,
+  Image = 42,
+  Line = 43,
+  LinearGradient = 44,
+  Marker = 45,
+  Mask = 46,
+  Mesh = 47,
+  Meshgradient = 48,
+  Meshpatch = 49,
+  Meshrow = 50,
+  Metadata = 51,
+  Mpath = 52,
+  Path = 53,
+  Pattern = 54,
+  Polygon = 55,
+  Polyline = 56,
+  RadialGradient = 57,
+  Rect = 58,
+  Set = 59,
+  Solidcolor = 60,
+  Stop = 61,
+  Svg = 62,
+  Symbol = 63,
+  Text = 64,
+  TextPath = 65,
+  Title = 66,
+  Tspan = 67,
+  Use = 68,
+  View = 69,
 }
 
-export function a(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <a>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <a>
+ */
+export function a(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.A << VNodeFlags.UniqueIdOffset),
     "<a",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</a>",
   );
 }
 
-export function altGlyph(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyph << VNodeFlags.UniqueIdOffset),
-    "<altGlyph",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</altGlyph>",
-  );
-}
-
-export function altGlyphDef(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyphDef << VNodeFlags.UniqueIdOffset),
-    "<altGlyphDef",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</altGlyphDef>",
-  );
-}
-
-export function altGlyphItem(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AltGlyphItem << VNodeFlags.UniqueIdOffset),
-    "<altGlyphItem",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</altGlyphItem>",
-  );
-}
-
-export function animate(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <animate>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/animate}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <animate>
+ */
+export function animate(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Animate << VNodeFlags.UniqueIdOffset),
     "<animate",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</animate>",
   );
 }
 
-export function animateColor(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <animateColor>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/animateColor}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <animateColor>
+ */
+export function animateColor(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateColor << VNodeFlags.UniqueIdOffset),
     "<animateColor",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</animateColor>",
   );
 }
 
-export function animateMotion(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <animateMotion>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/animateMotion}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <animateMotion>
+ */
+export function animateMotion(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateMotion << VNodeFlags.UniqueIdOffset),
     "<animateMotion",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</animateMotion>",
   );
 }
 
-export function animateTransform(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <animateTransform>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/animateTransform}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <animateTransform>
+ */
+export function animateTransform(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.AnimateTransform << VNodeFlags.UniqueIdOffset),
     "<animateTransform",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</animateTransform>",
   );
 }
 
-export function circle(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <circle>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/circle}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <circle>
+ */
+export function circle(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Circle << VNodeFlags.UniqueIdOffset),
     "<circle",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</circle>",
   );
 }
 
-export function clipPath(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <clipPath>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/clipPath}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <clipPath>
+ */
+export function clipPath(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ClipPath << VNodeFlags.UniqueIdOffset),
     "<clipPath",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</clipPath>",
   );
 }
 
-export function colorProfile(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ColorProfile << VNodeFlags.UniqueIdOffset),
-    "<color-profile",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</color-profile>",
-  );
-}
-
-export function cursor(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Cursor << VNodeFlags.UniqueIdOffset),
-    "<cursor",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</cursor>",
-  );
-}
-
-export function defs(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <defs>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/defs}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <defs>
+ */
+export function defs(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Defs << VNodeFlags.UniqueIdOffset),
     "<defs",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</defs>",
   );
 }
 
-export function desc(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <desc>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/desc}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <desc>
+ */
+export function desc(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Desc << VNodeFlags.UniqueIdOffset),
     "<desc",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</desc>",
   );
 }
 
-export function discard(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <discard>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/discard}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <discard>
+ */
+export function discard(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Discard << VNodeFlags.UniqueIdOffset),
     "<discard",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</discard>",
   );
 }
 
-export function ellipse(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <ellipse>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ellipse}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <ellipse>
+ */
+export function ellipse(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Ellipse << VNodeFlags.UniqueIdOffset),
     "<ellipse",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</ellipse>",
   );
 }
 
-export function feBlend(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feBlend>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feBlend}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feBlend>
+ */
+export function feBlend(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeBlend << VNodeFlags.UniqueIdOffset),
     "<feBlend",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feBlend>",
   );
 }
 
-export function feColorMatrix(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feColorMatrix>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feColorMatrix}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feColorMatrix>
+ */
+export function feColorMatrix(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeColorMatrix << VNodeFlags.UniqueIdOffset),
     "<feColorMatrix",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feColorMatrix>",
   );
 }
 
-export function feComponentTransfer(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feComponentTransfer>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feComponentTransfer}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feComponentTransfer>
+ */
+export function feComponentTransfer(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeComponentTransfer << VNodeFlags.UniqueIdOffset),
     "<feComponentTransfer",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feComponentTransfer>",
   );
 }
 
-export function feComposite(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feComposite>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feComposite}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feComposite>
+ */
+export function feComposite(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeComposite << VNodeFlags.UniqueIdOffset),
     "<feComposite",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feComposite>",
   );
 }
 
-export function feConvolveMatrix(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feConvolveMatrix>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feConvolveMatrix}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feConvolveMatrix>
+ */
+export function feConvolveMatrix(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeConvolveMatrix << VNodeFlags.UniqueIdOffset),
     "<feConvolveMatrix",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feConvolveMatrix>",
   );
 }
 
-export function feDiffuseLighting(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feDiffuseLighting>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feDiffuseLighting}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feDiffuseLighting>
+ */
+export function feDiffuseLighting(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDiffuseLighting << VNodeFlags.UniqueIdOffset),
     "<feDiffuseLighting",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feDiffuseLighting>",
   );
 }
 
-export function feDisplacementMap(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feDisplacementMap>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feDisplacementMap}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feDisplacementMap>
+ */
+export function feDisplacementMap(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDisplacementMap << VNodeFlags.UniqueIdOffset),
     "<feDisplacementMap",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feDisplacementMap>",
   );
 }
 
-export function feDistantLight(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feDistantLight>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feDistantLight}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feDistantLight>
+ */
+export function feDistantLight(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDistantLight << VNodeFlags.UniqueIdOffset),
     "<feDistantLight",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feDistantLight>",
   );
 }
 
-export function feDropShadow(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feDropShadow>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feDropShadow}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feDropShadow>
+ */
+export function feDropShadow(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeDropShadow << VNodeFlags.UniqueIdOffset),
     "<feDropShadow",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feDropShadow>",
   );
 }
 
-export function feFlood(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feFlood>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feFlood}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feFlood>
+ */
+export function feFlood(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFlood << VNodeFlags.UniqueIdOffset),
     "<feFlood",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feFlood>",
   );
 }
 
-export function feFuncA(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feFuncA>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feFuncA}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feFuncA>
+ */
+export function feFuncA(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncA << VNodeFlags.UniqueIdOffset),
     "<feFuncA",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feFuncA>",
   );
 }
 
-export function feFuncB(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feFuncB>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feFuncB}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feFuncB>
+ */
+export function feFuncB(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncB << VNodeFlags.UniqueIdOffset),
     "<feFuncB",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feFuncB>",
   );
 }
 
-export function feFuncG(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feFuncG>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feFuncG}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feFuncG>
+ */
+export function feFuncG(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncG << VNodeFlags.UniqueIdOffset),
     "<feFuncG",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feFuncG>",
   );
 }
 
-export function feFuncR(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feFuncR>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feFuncR}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feFuncR>
+ */
+export function feFuncR(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeFuncR << VNodeFlags.UniqueIdOffset),
     "<feFuncR",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feFuncR>",
   );
 }
 
-export function feGaussianBlur(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feGaussianBlur>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feGaussianBlur}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feGaussianBlur>
+ */
+export function feGaussianBlur(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeGaussianBlur << VNodeFlags.UniqueIdOffset),
     "<feGaussianBlur",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feGaussianBlur>",
   );
 }
 
-export function feImage(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feImage>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feImage}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feImage>
+ */
+export function feImage(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeImage << VNodeFlags.UniqueIdOffset),
     "<feImage",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feImage>",
   );
 }
 
-export function feMerge(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feMerge>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feMerge}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feMerge>
+ */
+export function feMerge(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMerge << VNodeFlags.UniqueIdOffset),
     "<feMerge",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feMerge>",
   );
 }
 
-export function feMergeNode(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feMergeNode>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feMergeNode}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feMergeNode>
+ */
+export function feMergeNode(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMergeNode << VNodeFlags.UniqueIdOffset),
     "<feMergeNode",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feMergeNode>",
   );
 }
 
-export function feMorphology(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feMorphology>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feMorphology}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feMorphology>
+ */
+export function feMorphology(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeMorphology << VNodeFlags.UniqueIdOffset),
     "<feMorphology",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feMorphology>",
   );
 }
 
-export function feOffset(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feOffset>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feOffset}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feOffset>
+ */
+export function feOffset(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeOffset << VNodeFlags.UniqueIdOffset),
     "<feOffset",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feOffset>",
   );
 }
 
-export function fePointLight(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <fePointLight>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fePointLight}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <fePointLight>
+ */
+export function fePointLight(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FePointLight << VNodeFlags.UniqueIdOffset),
     "<fePointLight",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</fePointLight>",
   );
 }
 
-export function feSpecularLighting(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feSpecularLighting>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feSpecularLighting}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feSpecularLighting>
+ */
+export function feSpecularLighting(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeSpecularLighting << VNodeFlags.UniqueIdOffset),
     "<feSpecularLighting",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feSpecularLighting>",
   );
 }
 
-export function feSpotLight(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feSpotLight>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feSpotLight}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feSpotLight>
+ */
+export function feSpotLight(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeSpotLight << VNodeFlags.UniqueIdOffset),
     "<feSpotLight",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feSpotLight>",
   );
 }
 
-export function feTile(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feTile>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feTile}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feTile>
+ */
+export function feTile(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeTile << VNodeFlags.UniqueIdOffset),
     "<feTile",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feTile>",
   );
 }
 
-export function feTurbulence(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <feTurbulence>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/feTurbulence}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <feTurbulence>
+ */
+export function feTurbulence(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FeTurbulence << VNodeFlags.UniqueIdOffset),
     "<feTurbulence",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</feTurbulence>",
   );
 }
 
-export function filter(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <filter>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/filter}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <filter>
+ */
+export function filter(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Filter << VNodeFlags.UniqueIdOffset),
     "<filter",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</filter>",
   );
 }
 
-export function font(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Font << VNodeFlags.UniqueIdOffset),
-    "<font",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</font>",
-  );
-}
-
-export function fontFace(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFace << VNodeFlags.UniqueIdOffset),
-    "<font-face",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</font-face>",
-  );
-}
-
-export function fontFaceFormat(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceFormat << VNodeFlags.UniqueIdOffset),
-    "<font-face-format",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</font-face-format>",
-  );
-}
-
-export function fontFaceName(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceName << VNodeFlags.UniqueIdOffset),
-    "<font-face-name",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</font-face-name>",
-  );
-}
-
-export function fontFaceSrc(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceSrc << VNodeFlags.UniqueIdOffset),
-    "<font-face-src",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</font-face-src>",
-  );
-}
-
-export function fontFaceUri(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.FontFaceUri << VNodeFlags.UniqueIdOffset),
-    "<font-face-uri",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</font-face-uri>",
-  );
-}
-
-export function foreignObject(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <foreignObject>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/foreignObject}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <foreignObject>
+ */
+export function foreignObject(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.ForeignObject << VNodeFlags.UniqueIdOffset),
     "<foreignObject",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</foreignObject>",
   );
 }
 
-export function g(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <g>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/g}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <g>
+ */
+export function g(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.G << VNodeFlags.UniqueIdOffset),
     "<g",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</g>",
   );
 }
 
-export function glyph(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Glyph << VNodeFlags.UniqueIdOffset),
-    "<glyph",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</glyph>",
-  );
-}
-
-export function glyphRef(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.GlyphRef << VNodeFlags.UniqueIdOffset),
-    "<glyphRef",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</glyphRef>",
-  );
-}
-
-export function hatch(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <hatch>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hatch}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <hatch>
+ */
+export function hatch(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hatch << VNodeFlags.UniqueIdOffset),
     "<hatch",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</hatch>",
   );
 }
 
-export function hatchpath(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <hatchpath>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hatchpath}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <hatchpath>
+ */
+export function hatchpath(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hatchpath << VNodeFlags.UniqueIdOffset),
     "<hatchpath",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</hatchpath>",
   );
 }
 
-export function hkern(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Hkern << VNodeFlags.UniqueIdOffset),
-    "<hkern",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</hkern>",
-  );
-}
-
-export function image(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <image>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/image}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <image>
+ */
+export function image(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Image << VNodeFlags.UniqueIdOffset),
     "<image",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</image>",
   );
 }
 
-export function line(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <line>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/line}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <line>
+ */
+export function line(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Line << VNodeFlags.UniqueIdOffset),
     "<line",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</line>",
   );
 }
 
-export function linearGradient(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <linearGradient>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/linearGradient}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <linearGradient>
+ */
+export function linearGradient(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.LinearGradient << VNodeFlags.UniqueIdOffset),
     "<linearGradient",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</linearGradient>",
   );
 }
 
-export function marker(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <marker>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marker}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <marker>
+ */
+export function marker(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Marker << VNodeFlags.UniqueIdOffset),
     "<marker",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</marker>",
   );
 }
 
-export function mask(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <mask>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mask}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <mask>
+ */
+export function mask(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mask << VNodeFlags.UniqueIdOffset),
     "<mask",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</mask>",
   );
 }
 
-export function mesh(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <mesh>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mesh}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <mesh>
+ */
+export function mesh(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mesh << VNodeFlags.UniqueIdOffset),
     "<mesh",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</mesh>",
   );
 }
 
-export function meshgradient(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <meshgradient>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meshgradient}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <meshgradient>
+ */
+export function meshgradient(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshgradient << VNodeFlags.UniqueIdOffset),
     "<meshgradient",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</meshgradient>",
   );
 }
 
-export function meshpatch(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <meshpatch>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meshpatch}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <meshpatch>
+ */
+export function meshpatch(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshpatch << VNodeFlags.UniqueIdOffset),
     "<meshpatch",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</meshpatch>",
   );
 }
 
-export function meshrow(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <meshrow>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meshrow}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <meshrow>
+ */
+export function meshrow(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Meshrow << VNodeFlags.UniqueIdOffset),
     "<meshrow",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</meshrow>",
   );
 }
 
-export function metadata(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <metadata>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/metadata}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <metadata>
+ */
+export function metadata(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Metadata << VNodeFlags.UniqueIdOffset),
     "<metadata",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</metadata>",
   );
 }
 
-export function missingGlyph(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.MissingGlyph << VNodeFlags.UniqueIdOffset),
-    "<missing-glyph",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</missing-glyph>",
-  );
-}
-
-export function mpath(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <mpath>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mpath}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <mpath>
+ */
+export function mpath(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Mpath << VNodeFlags.UniqueIdOffset),
     "<mpath",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</mpath>",
   );
 }
 
-export function path(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <path>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/path}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <path>
+ */
+export function path(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Path << VNodeFlags.UniqueIdOffset),
     "<path",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</path>",
   );
 }
 
-export function pattern(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <pattern>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pattern}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <pattern>
+ */
+export function pattern(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Pattern << VNodeFlags.UniqueIdOffset),
     "<pattern",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</pattern>",
   );
 }
 
-export function polygon(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <polygon>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/polygon}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <polygon>
+ */
+export function polygon(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Polygon << VNodeFlags.UniqueIdOffset),
     "<polygon",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</polygon>",
   );
 }
 
-export function polyline(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <polyline>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/polyline}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <polyline>
+ */
+export function polyline(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Polyline << VNodeFlags.UniqueIdOffset),
     "<polyline",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</polyline>",
   );
 }
 
-export function radialGradient(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <radialGradient>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/radialGradient}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <radialGradient>
+ */
+export function radialGradient(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.RadialGradient << VNodeFlags.UniqueIdOffset),
     "<radialGradient",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</radialGradient>",
   );
 }
 
-export function rect(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <rect>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rect}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <rect>
+ */
+export function rect(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Rect << VNodeFlags.UniqueIdOffset),
     "<rect",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</rect>",
   );
 }
 
-export function set(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <set>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/set}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <set>
+ */
+export function set(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Set << VNodeFlags.UniqueIdOffset),
     "<set",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</set>",
   );
 }
 
-export function solidcolor(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <solidcolor>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/solidcolor}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <solidcolor>
+ */
+export function solidcolor(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Solidcolor << VNodeFlags.UniqueIdOffset),
     "<solidcolor",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</solidcolor>",
   );
 }
 
-export function stop(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <stop>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/stop}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <stop>
+ */
+export function stop(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Stop << VNodeFlags.UniqueIdOffset),
     "<stop",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</stop>",
   );
 }
 
-export function svg(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <svg>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/svg}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <svg>
+ */
+export function svg(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Svg << VNodeFlags.UniqueIdOffset),
     "<svg",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</svg>",
   );
 }
 
-export function svgSwitch(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Switch << VNodeFlags.UniqueIdOffset),
-    "<switch",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</switch>",
-  );
-}
-
-export function symbol(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <symbol>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/symbol}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <symbol>
+ */
+export function symbol(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Symbol << VNodeFlags.UniqueIdOffset),
     "<symbol",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</symbol>",
   );
 }
 
-export function text(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <text>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/text}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <text>
+ */
+export function text(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Text << VNodeFlags.UniqueIdOffset),
     "<text",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</text>",
   );
 }
 
-export function textPath(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <textPath>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textPath}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <textPath>
+ */
+export function textPath(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.TextPath << VNodeFlags.UniqueIdOffset),
     "<textPath",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</textPath>",
   );
 }
 
-export function title(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <title>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <title>
+ */
+export function title(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Title << VNodeFlags.UniqueIdOffset),
     "<title",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</title>",
   );
 }
 
-export function tref(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Tref << VNodeFlags.UniqueIdOffset),
-    "<tref",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</tref>",
-  );
-}
-
-export function tspan(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <tspan>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tspan}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <tspan>
+ */
+export function tspan(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Tspan << VNodeFlags.UniqueIdOffset),
     "<tspan",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</tspan>",
   );
 }
 
-export function use(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <use>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/use}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <use>
+ */
+export function use(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Use << VNodeFlags.UniqueIdOffset),
     "<use",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</use>",
   );
 }
 
-export function view(className?: string): VNode<{} | null> {
+/**
+ * Creates Virtual DOM SVG element <view>.
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/view}
+ *
+ * @param className - Class name
+ * @param attrs - Attributes
+ * @param css - Styles
+ * @returns Virtual DOM SVG element <view>
+ */
+export function view(className?: string, attrs?: {}, css?: {}): VNode<{} | null> {
   return new VNode(
     VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.View << VNodeFlags.UniqueIdOffset),
     "<view",
+    attrs,
+    className,
     null,
-    className === void 0 ? null : className,
-    null,
+    css,
     "</view>",
-  );
-}
-
-export function vkern(className?: string): VNode<{} | null> {
-  return new VNode(
-    VNodeFlags.Element | VNodeFlags.SvgElement | (TagId.Vkern << VNodeFlags.UniqueIdOffset),
-    "<vkern",
-    null,
-    className === void 0 ? null : className,
-    null,
-    "</vkern>",
   );
 }

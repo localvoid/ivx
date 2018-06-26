@@ -248,6 +248,7 @@ export function componentWithBlueprint<P>(node: VNode<P>, context?: {}): (props:
     props,
     blueprint,
     null,
+    void 0,
     null,
   );
 }

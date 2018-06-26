@@ -53,11 +53,11 @@ const ListStyles = {
 };
 
 const BannerItem = component<string>((imageSrc) => {
-  return div().s(BannerStyles.item)
-    .c(img().s(BannerStyles.itemImg).a({ src: imageSrc }));
+  return div("", void 0, BannerStyles.item)
+    .c(img("", { src: imageSrc }, BannerStyles.itemImg));
 });
 
-const Banner = connect<any[], { bannerData: any[] }>(
+const Banner = connect<any[], undefined, { bannerData: any[] }>(
   (prev, props, context) => {
     const bannerData = context.bannerData;
     if (prev !== null && prev === bannerData) {
@@ -66,26 +66,26 @@ const Banner = connect<any[], { bannerData: any[] }>(
     return bannerData;
   },
   (data) => {
-    return div().s(BannerStyles.container).c([
+    return div("", void 0, BannerStyles.container).c([
       h2().c("ivi Banner: "),
-      div().s(BannerStyles.list)
+      div("", void 0, BannerStyles.list)
         .c(data.map((item: any, idx: number) => BannerItem(item.img)))]);
   },
 );
 
 const ListItem = component<{ href: string, img: string, title: string, price: number }>(
   (item) => {
-    return a().s(ListStyles.item).a({ href: item.href }).c([
-      img().s(ListStyles.itemImg),
-      p().s(ListStyles.itemTitle).c(item.title),
-      p().s(ListStyles.itemPrice).c(
+    return a("", { href: item.href }, ListStyles.item).c([
+      img("", void 0, ListStyles.itemImg),
+      p("", void 0, ListStyles.itemTitle).c(item.title),
+      p("", void 0, ListStyles.itemPrice).c(
         span().c(`price: ${item.price}`),
       ),
     ]);
   },
 );
 
-const List = connect<any[], { listData: any[] }>(
+const List = connect<any[], undefined, { listData: any[] }>(
   (prev, props, context) => {
     const listData = context.listData;
     if (prev !== null && prev === listData) {
@@ -94,9 +94,9 @@ const List = connect<any[], { listData: any[] }>(
     return listData;
   },
   (data) => {
-    return div().s(ListStyles.container).c([
+    return div("", void 0, ListStyles.container).c([
       h2().c("iviList "),
-      div().s(ListStyles.list).c(
+      div("", void 0, ListStyles.list).c(
         data.map((item: any, idx: number) => ListItem(item)),
       ),
     ]);

@@ -82,15 +82,15 @@ export class VNode<P = any> {
   /**
    * Properties.
    */
-  _props: P | null;
+  _props: P | undefined;
   /**
    * Style.
    */
-  _style: {} | null;
+  _style: {} | undefined;
   /**
    * Class name.
    */
-  _className: BlueprintNode | string | null;
+  _className: BlueprintNode | string | undefined;
   /**
    * Close element string.
    */
@@ -99,40 +99,19 @@ export class VNode<P = any> {
   constructor(
     flags: number,
     tag: string | ComponentDescriptor<P> | ConnectDescriptor<any, any, any> | null,
-    props: P | null,
-    className: BlueprintNode | string | null,
+    props: P | undefined,
+    className: BlueprintNode | string | undefined,
     children: VNodeChildren,
+    style: {} | undefined,
     close: string | null,
   ) {
     this._flags = flags;
     this._children = children;
     this._tag = tag;
     this._props = props;
-    this._style = null;
+    this._style = style;
     this._className = className;
     this._close = close;
-  }
-
-  /**
-   * Assigns style for an Element node.
-   *
-   * @param style - Style
-   * @returns This node
-   */
-  s<U extends {}>(style: U | null): this {
-    this._style = style;
-    return this;
-  }
-
-  /**
-   * Assigns DOM attributes for an Element node.
-   *
-   * @param attrs - DOM attributes
-   * @returns This node
-   */
-  a(attrs: { [key: string]: any } | null): this {
-    this._props = attrs as P;
-    return this;
   }
 
   /**
@@ -162,8 +141,9 @@ export function raw(text: string): VNode<null> {
     VNodeFlags.RawText,
     null,
     null,
-    null,
+    void 0,
     text,
+    void 0,
     null,
   );
 }
@@ -244,7 +224,7 @@ export function component<P>(
 export function component<P>(render: (props: P) => VNodeChildren): (props: P) => VNode<P> {
   const flags = VNodeFlags.Component | (nextComponentId++ << VNodeFlags.UniqueIdOffset);
   const d = { render, shouldUpdate: checkPropsIdentity, blueprint: null };
-  return (props: P) => new VNode<P>(flags, d, props, null, null, null);
+  return (props: P) => new VNode<P>(flags, d, props, void 0, null, void 0, null);
 }
 
 /**
@@ -270,7 +250,7 @@ export function withShouldUpdate<P>(
   const flags = VNodeFlags.Component | (nextComponentId++ << VNodeFlags.UniqueIdOffset);
   const v = c(undefined as any)._tag as ComponentDescriptor<P>;
   const d = { render: v.render, shouldUpdate, blueprint: null };
-  return (props: P) => new VNode<P>(flags, d, props, null, null, null);
+  return (props: P) => new VNode<P>(flags, d, props, void 0, null, void 0, null);
 }
 
 /**
@@ -285,8 +265,9 @@ export function context<T = {}>(ctx: T, children: VNodeChildren): VNode<T> {
     VNodeFlags.UpdateContext,
     null,
     ctx,
-    null,
+    void 0,
     children,
+    void 0,
     null,
   );
 }
@@ -400,8 +381,9 @@ export function connect<T, P, C>(
       flags,
       descriptor,
       props,
+      void 0,
       null,
-      null,
+      void 0,
       null,
     );
   };

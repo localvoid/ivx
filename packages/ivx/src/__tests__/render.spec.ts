@@ -24,40 +24,36 @@ describe("render", () => {
     expect(render(span())).toBe("<span></span>");
   });
 
-  test("<div> (null props)", () => {
-    expect(render(div().a(null))).toBe("<div></div>");
-  });
-
   test("<div> ({} props)", () => {
-    expect(render(div().a({}))).toBe("<div></div>");
+    expect(render(div("", {}))).toBe("<div></div>");
   });
 
   test("<div tabIndex='1'>", () => {
-    expect(render(div().a({ tabIndex: 1 }))).toBe(`<div tabIndex="1"></div>`);
+    expect(render(div("", { tabIndex: 1 }))).toBe(`<div tabIndex="1"></div>`);
   });
 
   test("<div tabIndex='1' title='2'>", () => {
-    expect(render(div().a({ tabIndex: 1, title: "2" }))).toBe(`<div tabIndex="1" title="2"></div>`);
+    expect(render(div("", { tabIndex: 1, title: "2" }))).toBe(`<div tabIndex="1" title="2"></div>`);
   });
 
   test("<div data-abc='a'", () => {
-    expect(render(div().a({ "data-abc": "a" }))).toBe(`<div data-abc="a"></div>`);
+    expect(render(div("", { "data-abc": "a" }))).toBe(`<div data-abc="a"></div>`);
   });
 
   test("<div aria-type='button'", () => {
-    expect(render(div().a({ "aria-type": "button" }))).toBe(`<div aria-type="button"></div>`);
+    expect(render(div("", { "aria-type": "button" }))).toBe(`<div aria-type="button"></div>`);
   });
 
   test("<div boolean=false", () => {
-    expect(render(div().a({ boolean: false }))).toBe(`<div></div>`);
+    expect(render(div("", { boolean: false }))).toBe(`<div></div>`);
   });
 
   test("<div boolean=true", () => {
-    expect(render(div().a({ boolean: true }))).toBe(`<div boolean></div>`);
+    expect(render(div("", { boolean: true }))).toBe(`<div boolean></div>`);
   });
 
   test("<div class=''>", () => {
-    expect(render(div(""))).toBe(`<div class=""></div>`);
+    expect(render(div(""))).toBe(`<div></div>`);
   });
 
   test("<div class='a'>", () => {
@@ -68,20 +64,16 @@ describe("render", () => {
     expect(render(div("a b"))).toBe(`<div class="a b"></div>`);
   });
 
-  test("<div style=null>", () => {
-    expect(render(div().s(null))).toBe(`<div></div>`);
-  });
-
   test("<div style={}>", () => {
-    expect(render(div().s({}))).toBe(`<div></div>`);
+    expect(render(div("", void 0, {}))).toBe(`<div></div>`);
   });
 
   test("<div style={top: 10px}>", () => {
-    expect(render(div().s({ top: "10px" }))).toBe(`<div style="top:10px"></div>`);
+    expect(render(div("", void 0, { top: "10px" }))).toBe(`<div style="top:10px"></div>`);
   });
 
   test("<div style={top: 10px; left: 20px}>", () => {
-    expect(render(div().s({ top: "10px", left: "20px" })))
+    expect(render(div("", void 0, { top: "10px", left: "20px" })))
       .toBe(`<div style="top:10px;left:20px"></div>`);
   });
 
@@ -183,11 +175,11 @@ describe("render", () => {
 
   describe("escape", () => {
     test("attribute values", () => {
-      expect(render(div().a({ id: `"&` }))).toBe(`<div id="&quot;&amp;"></div>`);
+      expect(render(div("", { id: `"&` }))).toBe(`<div id="&quot;&amp;"></div>`);
     });
 
     test("style values", () => {
-      expect(render(div().s({ color: `"&` }))).toBe(`<div style="color:&quot;&amp;"></div>`);
+      expect(render(div("", void 0, { color: `"&` }))).toBe(`<div style="color:&quot;&amp;"></div>`);
     });
 
     test("single-child text", () => {
@@ -216,77 +208,77 @@ describe("render", () => {
     describe("props", () => {
       test(`null => {}`, () => {
         const bp = createBlueprint(div());
-        expect(renderWithBlueprint(div().a({}), bp)).toBe(`<div></div>`);
+        expect(renderWithBlueprint(div("", {}), bp)).toBe(`<div></div>`);
       });
 
       test(`{} => null`, () => {
-        const bp = createBlueprint(div().a({}));
+        const bp = createBlueprint(div("", {}));
         expect(renderWithBlueprint(div(), bp)).toBe(`<div></div>`);
       });
 
       test(`{} => {}`, () => {
-        const bp = createBlueprint(div().a({}));
-        expect(renderWithBlueprint(div().a({}), bp)).toBe(`<div></div>`);
+        const bp = createBlueprint(div("", {}));
+        expect(renderWithBlueprint(div("", {}), bp)).toBe(`<div></div>`);
       });
 
       test(`null => { title: "abc" }`, () => {
         const bp = createBlueprint(div());
-        expect(renderWithBlueprint(div().a({ title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
+        expect(renderWithBlueprint(div("", { title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
       });
 
       test(`{} => { title: "abc" }`, () => {
-        const bp = createBlueprint(div().a({}));
-        expect(renderWithBlueprint(div().a({ title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
+        const bp = createBlueprint(div("", {}));
+        expect(renderWithBlueprint(div("", { title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
       });
 
       test(`{ title: "abc" } => { title: "abc" }`, () => {
-        const bp = createBlueprint(div().a({ title: "abc" }));
-        expect(renderWithBlueprint(div().a({ title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
+        const bp = createBlueprint(div("", { title: "abc" }));
+        expect(renderWithBlueprint(div("", { title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
       });
 
       test(`{ title: "a" } => { title: "abc" }`, () => {
-        const bp = createBlueprint(div().a({ title: "a" }));
-        expect(renderWithBlueprint(div().a({ title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
+        const bp = createBlueprint(div("", { title: "a" }));
+        expect(renderWithBlueprint(div("", { title: "abc" }), bp)).toBe(`<div title="abc"></div>`);
       });
     });
 
     describe("style", () => {
       test(`null => {}`, () => {
         const bp = createBlueprint(div());
-        expect(renderWithBlueprint(div().s({}), bp)).toBe(`<div></div>`);
+        expect(renderWithBlueprint(div("", void 0, {}), bp)).toBe(`<div></div>`);
       });
 
       test(`{} => null`, () => {
-        const bp = createBlueprint(div().s({}));
+        const bp = createBlueprint(div("", void 0, {}));
         expect(renderWithBlueprint(div(), bp)).toBe(`<div></div>`);
       });
 
       test(`{} => {}`, () => {
-        const bp = createBlueprint(div().s({}));
-        expect(renderWithBlueprint(div().s({}), bp)).toBe(`<div></div>`);
+        const bp = createBlueprint(div("", void 0, {}));
+        expect(renderWithBlueprint(div("", void 0, {}), bp)).toBe(`<div></div>`);
       });
 
       test(`null => { color: "green" }`, () => {
         const bp = createBlueprint(div());
-        expect(renderWithBlueprint(div().s({ color: "green" }), bp))
+        expect(renderWithBlueprint(div("", void 0, { color: "green" }), bp))
           .toBe(`<div style="color:green"></div>`);
       });
 
       test(`{} => { color: "green" }`, () => {
-        const bp = createBlueprint(div().s({}));
-        expect(renderWithBlueprint(div().s({ color: "green" }), bp))
+        const bp = createBlueprint(div("", void 0, {}));
+        expect(renderWithBlueprint(div("", void 0, { color: "green" }), bp))
           .toBe(`<div style="color:green"></div>`);
       });
 
       test(`{ color: "green" } => { color: "green" }`, () => {
-        const bp = createBlueprint(div().s({ color: "green" }));
-        expect(renderWithBlueprint(div().s({ color: "green" }), bp))
+        const bp = createBlueprint(div("", void 0, { color: "green" }));
+        expect(renderWithBlueprint(div("", void 0, { color: "green" }), bp))
           .toBe(`<div style="color:green"></div>`);
       });
 
       test(`{color: "red" } => { color: "green" }`, () => {
-        const bp = createBlueprint(div().s({ color: "red" }));
-        expect(renderWithBlueprint(div().s({ color: "green" }), bp))
+        const bp = createBlueprint(div("", void 0, { color: "red" }));
+        expect(renderWithBlueprint(div("", void 0, { color: "green" }), bp))
           .toBe(`<div style="color:green"></div>`);
       });
     });
