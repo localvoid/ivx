@@ -6,8 +6,6 @@
   ],
   "scripts": {
     "lint": "tslint --format codeFrame --project ./tsconfig.json",
-    "clean": "make clean",
-    "build": "make build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk ./node_modules/.bin/jest --runInBand",
@@ -19,15 +17,15 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^22.2.2",
-    "@types/node": "^10.1.0",
+    "@types/jest": "^23.1.2",
+    "@types/node": "^10.3.6",
     "codecov": "^3.0.2",
-    "husky": "^1.0.0-rc.4",
+    "husky": "^1.0.0-rc.9",
     "ivi-tslint-rules": "^0.1.4",
-    "jest": "^22.4.3",
+    "jest": "^23.2.0",
     "ts-jest": "^22.4.6",
-    "tslib": "^1.9.1",
+    "tslib": "^1.9.3",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^2.9.2"
   }
 }
